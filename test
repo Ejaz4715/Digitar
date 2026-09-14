@@ -1,0 +1,16 @@
+import { test, expect } from '@playwright/test';
+
+test('test', async ({ page }) => {
+  await page.goto('https://stg-digitar-sakani.housingapps.sa/');
+  await page.getByRole('button', { name: 'تسجيل الدخول' }).click();
+  await page.goto('https://beta-sakani.housingapps.sa/app/authentication/cockpit?lang=ar');
+  await page.getByRole('button', { name: 'قبول ملفات تعريف الارتباط' }).click();
+  await page.locator('.tw\\:bg-v6-background-25').first().click();
+  await page.locator('app-dx-login-form-v6').getByRole('button', { name: 'تسجيل الدخول' }).click();
+  await page.getByText('المتابعة', { exact: true }).click();
+  await page.goto('https://beta-sakani.housingapps.sa/authApi/api/v4/iam/cockpit');
+  await page.goto('https://stg-digitar-sakani.housingapps.sa/?code=01a09ef8-f832-7379-a37e-a61f4492234d&relay_state=https%3A%2F%2Fstg-digitar-sakani.housingapps.sa%2F%3Flang%3Dar');
+  await page.goto('https://stg-digitar-sakani.housingapps.sa/dashboard');
+  await page.getByRole('button', { name: 'إلغاء' }).click();
+  await page.getByRole('button', { name: 'لاحقاً' }).click();
+});
