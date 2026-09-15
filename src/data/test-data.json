@@ -1,4 +1,24 @@
 {
-  "digitarUrl":"https://stg-digitar-sakani.housingapps.sa/",
-  "userId":"1016549832"
+  "environments": {
+    "broker": "https://stg-digitar-sakani.housingapps.sa/",
+    "developer": "https://stg-digitar-sakani.housingapps.sa/",
+    "admin": "",
+    "sakaniUser": ""
+  },
+  "services": {
+    "login": {
+      "userId": "1016549832",
+      "name": "Ahmed",
+      "lastLoginTimestamp": "2026-09-15T13:14:13.146Z"
+    },
+    "booking": {
+      "userId": "1016549832"
+    },
+    "issueLicense": {
+      "userId": "1016549832"
+    },
+    "rentalBehavior": {
+      "userId": "1016549832"
+    }
+  }
 }
