@@ -49,7 +49,6 @@ test.describe("Digitar Authentication Test Suite", () => {
     await logStep("update existing data in json under 'login' service", async () => {
       DataHelper.updateServiceData('login', 'name', 'Ahmed');
     });
-
   });
 
   test("TC-03: Accept cookies and verify main landing page", { annotation: [{ product: 'Digitar', type: 'non-critical' } as any] }, async () => {

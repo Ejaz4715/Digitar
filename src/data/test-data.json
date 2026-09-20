@@ -7,7 +7,7 @@
   },
   "services": {
     "login": {
-      "userId": "1016549832",
+      "userId": "https://stg-digitar-sakani.housingapps.sa/",
       "name": "Ahmed",
       "lastLoginTimestamp": "2026-09-15T13:14:13.146Z"
     },
