@@ -1,19 +1,13 @@
-// src/utils/stepHelper.ts
+// log-steps.ts
 import { test } from '@playwright/test';
 
 export async function logStep(
   title: string,
-  stepFunction: () => Promise<void>
-) {
-  const testInfo = test.info(); // Gets current running test info automatically
-
-  await test.step(title, async () => {
-    testInfo.attachments.push({
-      name: 'step',
-      contentType: 'application/json',
-      body: Buffer.from(JSON.stringify({ title, timestamp: new Date().toISOString() }))
-    });
-    
-    await stepFunction();
-  });
+  stepFunction?: () => Promise<void> // Mark as optional with ?
+): Promise<void> {
+  if (stepFunction) {
+    await test.step(title, stepFunction);
+  } else {
+    await test.step(title, async () => {}); // Or execute console/reporter log
+  }
 }
