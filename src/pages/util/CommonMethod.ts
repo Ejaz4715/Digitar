@@ -60,4 +60,9 @@ export class CommonMethods {
 
     await expect(element).toBeVisible();
   }
+  async fill(inputField: { xpath: string }, value: string) {
+    const input = this.page.locator(inputField.xpath);
+    await expect(input).toBeVisible();
+    await input.fill(value);
+  }
 }
