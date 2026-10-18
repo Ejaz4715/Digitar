@@ -1,19 +1,22 @@
 {
   "environments": {
     "broker": "https://stg-digitar-sakani.housingapps.sa/",
-    "developer": "https://stg-digitar-sakani.housingapps.sa/"
+    "developer": "https://pre-sakani-partners.housingapps.sa/auth"
   },
   "services": {
-    "login": {
+    "opportunities-pool": {
       "userId": "1016549832"
     },
     "booking": {
       "userId": "1016549832"
     },
-    "issueLicense": {
+    "issue-license": {
       "userId": "1016549832"
     },
-    "rentalBehavior": {
+    "rental-behavior": {
+      "userId": "1016549832"
+    },
+    "properties-and-units": {
       "userId": "1016549832"
     }
   }
