@@ -1,10 +1,25 @@
-
-# Playwright
+# Dependencies
 node_modules/
-/test-results/
-/playwright-report/
-/blob-report/
-/playwright/.cache/
-/playwright/.auth/
-/report-dashboard/test-reports-history/
-/report-dashboard/dashboard.html
+
+# Generated Test Reports & Artifacts
+playwright-report/
+test-results/
+report-dashboard/test-reports-history*/
+report-dashboard/dashboard.html
+
+
+# Certificates & Secrets
+certs/
+
+# AI & IDE Cache / Logs
+.claude/
+.playwright-mcp/
+.claude/
+.playwright-mcp/
+certs/
+.env
+src/downloads/*
+!src/downloads/.gitkeep
+
+## IntelliJ files
+.idea/
