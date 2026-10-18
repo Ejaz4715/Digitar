@@ -1,9 +1,7 @@
 {
   "environments": {
     "broker": "https://stg-digitar-sakani.housingapps.sa/",
-    "developer": "https://stg-digitar-sakani.housingapps.sa/",
-    "admin": "",
-    "sakaniUser": ""
+    "developer": "https://stg-digitar-sakani.housingapps.sa/"
   },
   "services": {
     "login": {
