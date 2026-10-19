@@ -1,7 +1,6 @@
-
-const path = require("path");
-import { Page, expect } from "@playwright/test";
-import { LoginObjects } from '@objects/LoginObjects'
+const path = require('path');
+import { Page, expect } from '@playwright/test';
+import { LoginObjects } from '@objects/LoginObjects';
 
 export class LoginPage {
   page: Page;
@@ -13,29 +12,21 @@ export class LoginPage {
     await this.page.goto(url);
   }
   async clickLoginButtonFromMain() {
-    const loginButtonFromMain = this.page.getByRole(
-      LoginObjects.loginButtonFromMain.role,
-      { name: LoginObjects.loginButtonFromMain.name },
-    );
+    const loginButtonFromMain = this.page.getByRole(LoginObjects.loginButtonFromMain.role, { name: LoginObjects.loginButtonFromMain.name });
     await expect(loginButtonFromMain).toBeVisible({ timeout: 90000 });
-    await (loginButtonFromMain).click();
+    await loginButtonFromMain.click();
   }
 
   async clickLoginButton() {
-    const loginButton = this.page.locator(
-      LoginObjects.loginButton.xpath,
-    );
+    const loginButton = this.page.locator(LoginObjects.loginButton.xpath);
     await expect(loginButton).toBeVisible({ timeout: 90000 });
 
-    await (loginButton).click();
+    await loginButton.click();
   }
 
   async acceptCookies() {
-    const acceptCookiesButton = this.page.getByRole(
-      LoginObjects.acceptCookiesButton.role,
-      { name: LoginObjects.acceptCookiesButton.name },
-    );
-    await (acceptCookiesButton).click();
+    const acceptCookiesButton = this.page.getByRole(LoginObjects.acceptCookiesButton.role, { name: LoginObjects.acceptCookiesButton.name });
+    await acceptCookiesButton.click();
   }
   async enterUserId(userId: string) {
     const userIdInput = this.page.locator(LoginObjects.userIdInput.xpath);
@@ -46,20 +37,16 @@ export class LoginPage {
   async clickContinueButton() {
     const continueButton = this.page.locator(LoginObjects.continueButton.xpath);
     await expect(continueButton).toBeVisible({ timeout: 90000 });
-    await (continueButton).click();
+    await continueButton.click();
   }
 
   async waitForNafathPromptToDisappear() {
-    const nafathPromptHeading = this.page.getByRole(
-      LoginObjects.nafathPromptHeading.role,
-      { name: LoginObjects.nafathPromptHeading.name },
-    );
+    const nafathPromptHeading = this.page.getByRole(LoginObjects.nafathPromptHeading.role, { name: LoginObjects.nafathPromptHeading.name });
     try {
       await expect(nafathPromptHeading).toBeVisible({ timeout: 10000 });
       await expect(nafathPromptHeading).toBeHidden({ timeout: 10000 });
-    }
-    catch {
-      console.log("Nafath prompt took too long to pass");
+    } catch {
+      console.log('Nafath prompt took too long to pass');
     }
   }
 }

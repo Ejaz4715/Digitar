@@ -1,4 +1,4 @@
-import { expect, Page } from '@playwright/test';
+import { expect, Locator, Page } from '@playwright/test';
 type Element =
   | { readonly xpath: string }
   | {
@@ -15,53 +15,44 @@ export class CommonMethods {
   constructor(page: Page) {
     this.page = page;
   }
+  private getElement(elementObject: Element): Locator {
+    return 'xpath' in elementObject
+      ? this.page.locator(elementObject.xpath)
+      : 'role' in elementObject
+        ? this.page.getByRole(elementObject.role, {
+            name: elementObject.name,
+            exact: elementObject.exact,
+          })
+        : this.page.getByText(elementObject.text, {
+            exact: elementObject.exact,
+          });
+  }
   /**
    * Clicks on a locator if it is visible.
-   * @param locator The locator to click.
+   * @param elementObject The page object describing the element to click.
    * @param options Timeout options.
    */
-  async clickIfVisible(locator: any, options: { timeout?: number } = {}) {
-    const timeout = options.timeout ?? 5000;
-    const isVisible = await locator.isVisible({ timeout }).catch(() => false);
-    if (isVisible) {
-      await locator.click();
+  async clickIfVisible(elementObject: Element, options: { timeout?: number } = {}) {
+    const element = this.getElement(elementObject);
+    if (await element.isVisible()) {
+      await element.click(options);
     }
   }
 
   async clickElement(elementObject: Element) {
-    const element =
-      'xpath' in elementObject
-        ? this.page.locator(elementObject.xpath)
-        : 'role' in elementObject
-          ? this.page.getByRole(elementObject.role, {
-              name: elementObject.name,
-              exact: elementObject.exact,
-            })
-          : this.page.getByText(elementObject.text, {
-              exact: elementObject.exact,
-            });
+    const element = this.getElement(elementObject);
 
     await element.waitFor({ state: 'visible' });
     await element.click();
   }
 
   async verifyElementVisible(elementObject: Element) {
-    const element =
-      'xpath' in elementObject
-        ? this.page.locator(elementObject.xpath)
-        : 'role' in elementObject
-          ? this.page.getByRole(elementObject.role, {
-              name: elementObject.name,
-              exact: elementObject.exact,
-            })
-          : this.page.getByText(elementObject.text, {
-              exact: elementObject.exact,
-            });
+    const element = this.getElement(elementObject);
 
     await expect(element).toBeVisible();
   }
-  async fill(inputField: { xpath: string }, value: string) {
-    const input = this.page.locator(inputField.xpath);
+  async fill(inputField: Element, value: string) {
+    const input = this.getElement(inputField);
     await expect(input).toBeVisible();
     await input.fill(value);
   }

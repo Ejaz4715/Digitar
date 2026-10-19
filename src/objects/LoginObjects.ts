@@ -13,8 +13,18 @@ export const LoginObjects = {
     xpath: "//input[@id='username']",
   },
   continueButton: {
-    xpath: "//button[contains(text(),'المتابعة')]",
+    xpath: "(//button[contains(text(),'المتابعة')])[2]",
   },
+
+  continueWithNafathButton: {
+    role: 'button',
+    name: 'المتابعة مع نفاذ',
+  },
+  nafathIdInput: {
+    role: 'textbox',
+    name: 'e.g:',
+  },
+
   cancelButton: {
     role: 'button',
     name: 'إلغاء',
