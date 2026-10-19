@@ -21,6 +21,21 @@
     },
     "properties-and-units": {
       "userId": "1016549832"
+    },
+    "broker-dashboard-projects": {
+      "userId": "1016549832",
+      "unitCode": "01-01-0002-86-2211",
+      "projectFilter": {
+        "projectName": "الرياض التحالف العقارية إشراق ليفنج",
+        "projectCode": "01-01-0002",
+        "region": "الرياض",
+        "city": "شقراء"
+      },
+      "unitFilter": {
+        "unitBedroomsNumber": "4",
+        "unitState": "نشط",
+        "beneficiaryState": "غير مستفيد"
+      }
     }
   }
 }
