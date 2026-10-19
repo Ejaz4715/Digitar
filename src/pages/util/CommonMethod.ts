@@ -34,9 +34,16 @@ export class CommonMethods {
    */
   async clickIfVisible(elementObject: Element, options: { timeout?: number } = {}) {
     const element = this.getElement(elementObject);
-    if (await element.isVisible()) {
-      await element.click(options);
+    try {
+      await element.waitFor({ state: 'visible', timeout: options.timeout ?? 5000 });
+    } catch (error) {
+      if (error instanceof Error && error.name === 'TimeoutError') {
+        return;
+      }
+      throw error;
     }
+
+    await element.click(options);
   }
 
   async clickElement(elementObject: Element) {
@@ -51,6 +58,14 @@ export class CommonMethods {
 
     await expect(element).toBeVisible();
   }
+
+  async verifyEitherElementVisible(firstElement: Element, secondElement: Element) {
+    const first = this.getElement(firstElement);
+    const second = this.getElement(secondElement);
+
+    await expect.poll(async () => (await first.isVisible()) || (await second.isVisible())).toBe(true);
+  }
+
   async fill(inputField: Element, value: string) {
     const input = this.getElement(inputField);
     await expect(input).toBeVisible();

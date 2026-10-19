@@ -15,7 +15,6 @@ export const LoginObjects = {
   continueButton: {
     xpath: "(//button[contains(text(),'المتابعة')])[2]",
   },
-
   continueWithNafathButton: {
     role: 'button',
     name: 'المتابعة مع نفاذ',
@@ -24,13 +23,19 @@ export const LoginObjects = {
     role: 'textbox',
     name: 'e.g:',
   },
-
   cancelButton: {
     role: 'button',
     name: 'إلغاء',
+    exact: true,
   },
   laterButton: {
     role: 'button',
     name: 'لاحقاً',
+    exact: true,
+  },
+  doneButton: {
+    role: 'button',
+    name: 'تم',
+    exact: true,
   },
 } as const;

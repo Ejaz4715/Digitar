@@ -23,11 +23,14 @@ export const PropertiesAndUnitsObjects = {
   hotelOption: {
     xpath: "//span[(text()='فندق')]",
   },
+  apartmentOption: {
+    xpath: "//span[(text()='شقة')]",
+  },
   clearAllButton: {
     xpath: "//button[(text()=' مسح الكل ')]",
   },
   applyButton: {
-    xpath: "applyButton: //button[(text()=' تطبيق ')]",
+    xpath: "//button[(text()=' تطبيق ')]",
   },
   noDataFoundMessage: {
     xpath: '//app-no-data-found',
