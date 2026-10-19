@@ -56,9 +56,9 @@ test.describe('View Properties and Units', () => {
     await logStep('Step 03: Enter user id and login');
     await app.commonMethods.clickElement(LoginObjects.continueWithNafathButton);
     await app.commonMethods.fill(LoginObjects.nafathIdInput, userId);
+    await page.pause();
     await app.loginPage.clickContinueButton();
     await app.loginPage.waitForNafathPromptToDisappear();
-    await page.pause();
     await logStep('Step 04: Check the pop ups if exist');
     await app.commonMethods.clickIfVisible(LoginObjects.cancelButton);
     await app.commonMethods.clickIfVisible(LoginObjects.laterButton);
