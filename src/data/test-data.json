@@ -4,6 +4,9 @@
     "developer": "https://pre-sakani-partners.housingapps.sa/auth"
   },
   "services": {
+    "login": {
+      "userId": "1016549832"
+    },
     "opportunities-pool": {
       "userId": "1016549832"
     },
