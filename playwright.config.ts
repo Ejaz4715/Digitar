@@ -7,19 +7,12 @@ const timestamp = new Date().toISOString().replace(/[:T]/g, '-').replace(/\..+/,
 
 export default defineConfig({
   testDir: './',
-  testMatch: [
-    'tests/**/*.spec.{js,ts}',
-  ],
+  testMatch: ['tests/**/*.spec.{js,ts}'],
   fullyParallel: false,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
   workers: 1,
-  reporter: [
-    ['html', { open: 'never' }],
-    ['list'],
-    ['json', { outputFile: 'test-results/results.json' }],
-    ['json', { outputFile: `report-dashboard/test-reports-history/results-${timestamp}.json` }]
-  ],
+  reporter: [['html', { open: 'never' }], ['list'], ['json', { outputFile: 'test-results/results.json' }], ['json', { outputFile: `report-dashboard/test-reports-history/results-${timestamp}.json` }]],
 
   metadata: {
     // Default fallback environment
@@ -29,7 +22,7 @@ export default defineConfig({
       Sakani: process.env.MARKETPLACE_ENV || 'Pre-Prod',
       Digitar: process.env.DIGITAR_ENV || 'STG',
       Sayal: process.env.SAYAL_ENV || 'Pre-Prod',
-    }
+    },
   },
 
   timeout: 480_000,
@@ -45,10 +38,10 @@ export default defineConfig({
     viewport: { width: 1440, height: 900 },
     ignoreHTTPSErrors: true,
     launchOptions: {
-      args: ["--start-maximized"],
+      args: ['--start-maximized', '--disable-blink-features=AutomationControlled'],
     },
     headless: false,
-    permissions: ["geolocation"],
+    permissions: ['geolocation'],
     geolocation: { latitude: 24.7136, longitude: 46.6753 },
   },
 
@@ -56,22 +49,22 @@ export default defineConfig({
     {
       name: 'chromium',
       use: {
-        ...devices["Desktop Chrome"],
+        ...devices['Desktop Chrome'],
         viewport: null,
         deviceScaleFactor: undefined,
       },
     },
     ...(process.env.ALL_BROWSERS
       ? [
-        {
-          name: 'firefox',
-          use: { ...devices['Desktop Firefox'], viewport: { width: 1440, height: 900 } },
-        },
-        {
-          name: 'webkit',
-          use: { ...devices['Desktop Safari'], viewport: { width: 1440, height: 900 } },
-        },
-      ]
+          {
+            name: 'firefox',
+            use: { ...devices['Desktop Firefox'], viewport: { width: 1440, height: 900 } },
+          },
+          {
+            name: 'webkit',
+            use: { ...devices['Desktop Safari'], viewport: { width: 1440, height: 900 } },
+          },
+        ]
       : []),
   ],
 });
