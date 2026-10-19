@@ -19,9 +19,7 @@ export default defineConfig({
     environment: process.env.TEST_ENV || 'Pre-Prod',
     // Per-product environment mapping
     environments: {
-      Sakani: process.env.MARKETPLACE_ENV || 'Pre-Prod',
       Digitar: process.env.DIGITAR_ENV || 'STG',
-      Sayal: process.env.SAYAL_ENV || 'Pre-Prod',
     },
   },
 
@@ -38,11 +36,11 @@ export default defineConfig({
     viewport: { width: 1440, height: 900 },
     ignoreHTTPSErrors: true,
     launchOptions: {
-      args: ['--start-maximized', '--disable-blink-features=AutomationControlled'],
+      args: ['--start-maximized', '--disable-features=LocalNetworkAccessCheck', '--disable-blink-features=AutomationControlled'],
     },
     headless: false,
-    permissions: ['geolocation'],
-    geolocation: { latitude: 24.7136, longitude: 46.6753 },
+    permissions: ['geolocation', 'local-network-access'],
+    geolocation: { latitude: 21.5424, longitude: 39.198 },
   },
 
   projects: [
@@ -54,17 +52,5 @@ export default defineConfig({
         deviceScaleFactor: undefined,
       },
     },
-    ...(process.env.ALL_BROWSERS
-      ? [
-          {
-            name: 'firefox',
-            use: { ...devices['Desktop Firefox'], viewport: { width: 1440, height: 900 } },
-          },
-          {
-            name: 'webkit',
-            use: { ...devices['Desktop Safari'], viewport: { width: 1440, height: 900 } },
-          },
-        ]
-      : []),
   ],
 });
