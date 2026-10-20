@@ -36,6 +36,12 @@
         "unitState": "نشط",
         "beneficiaryState": "غير مستفيد"
       }
+    },
+    "issue-ad-license": {
+      "userId": "1016549832",
+      "searchValue": "6100003178",
+      "adLicemseNubmer": "7200003224",
+      "editDescription": "Edit Description"
     }
   }
 }

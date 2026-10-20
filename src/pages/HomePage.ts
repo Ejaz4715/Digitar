@@ -1,4 +1,3 @@
-import { ProfileDetailsObjects } from '@objects/ProfileDetailsObjects';
 import { Page } from '@playwright/test';
 import { HomePageObjects } from '@objects/HomePageObjects';
 
@@ -33,19 +32,6 @@ export class HomePage {
     await this.page.locator(HomePageObjects.languageSwitcherButton.css).click();
     await this.page.waitForTimeout(10000);
   }
-
-  async clickOnUserProfileIconFromMain() {
-    const profileIcon = ProfileDetailsObjects.userProfileIconFromMain.css;
-    await this.page.locator(profileIcon).waitFor({ state: 'visible', timeout: 30_000 });
-    await this.page.locator(profileIcon).click();
-  }
-
-  async selectUserProfileFromDropdown() {
-    const yourProfileItem = ProfileDetailsObjects.yourProfileItem.css;
-    await this.page.locator(yourProfileItem).waitFor({ state: 'visible', timeout: 30_000 });
-    await this.page.locator(yourProfileItem).click();
-  }
-
   async clickOnDashboard() {
     await this.page.locator(HomePageObjects.dashboardIconButton.xpath).waitFor({ state: 'visible', timeout: 30_000 });
     await this.page.click(HomePageObjects.dashboardIconButton.xpath);
