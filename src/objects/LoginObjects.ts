@@ -15,6 +15,9 @@ export const LoginObjects = {
   continueButton: {
     xpath: "(//button[contains(text(),'المتابعة')])[2]",
   },
+  continueButton2: {
+    xpath: "//button[contains(text(),'المتابعة')]",
+  },
   continueWithNafathButton: {
     role: 'button',
     name: 'المتابعة مع نفاذ',

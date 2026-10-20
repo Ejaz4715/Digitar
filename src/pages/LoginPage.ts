@@ -15,6 +15,7 @@ export class LoginPage {
     const loginButtonFromMain = this.page.getByRole(LoginObjects.loginButtonFromMain.role, { name: LoginObjects.loginButtonFromMain.name });
     await expect(loginButtonFromMain).toBeVisible({ timeout: 90000 });
     await loginButtonFromMain.click();
+    await this.page.waitForTimeout(20000);
   }
 
   async clickLoginButton() {
@@ -48,5 +49,11 @@ export class LoginPage {
     } catch {
       console.log('Nafath prompt took too long to pass');
     }
+  }
+
+  async clickOnContinue() {
+    const continueButton = this.page.locator(LoginObjects.continueButton2.xpath);
+    await expect(continueButton).toBeVisible({ timeout: 90000 });
+    await continueButton.click();
   }
 }
