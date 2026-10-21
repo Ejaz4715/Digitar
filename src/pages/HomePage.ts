@@ -1,4 +1,3 @@
-import { ProfileDetailsObjects } from '@objects/ProfileDetailsObjects';
 import { Page } from '@playwright/test';
 import { HomePageObjects } from '@objects/HomePageObjects';
 
@@ -33,7 +32,6 @@ export class HomePage {
     await this.page.locator(HomePageObjects.languageSwitcherButton.css).click();
     await this.page.waitForTimeout(10000);
   }
-
   async clickOnDashboard() {
     await this.page.locator(HomePageObjects.dashboardIconButton.xpath).waitFor({ state: 'visible', timeout: 30_000 });
     await this.page.click(HomePageObjects.dashboardIconButton.xpath);

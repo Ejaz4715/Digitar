@@ -49,6 +49,7 @@ export class CommonMethods {
   async clickElement(elementObject: Element) {
     const element = this.getElement(elementObject);
 
+    await this.page.waitForTimeout(3000);
     await element.waitFor({ state: 'visible' });
     await element.click();
   }
@@ -68,7 +69,18 @@ export class CommonMethods {
 
   async fill(inputField: Element, value: string) {
     const input = this.getElement(inputField);
+    await this.page.waitForTimeout(3000);
     await expect(input).toBeVisible();
     await input.fill(value);
+  }
+  async press(inputField: Element, key: Parameters<Locator['press']>[0]) {
+    const input = this.getElement(inputField);
+    await expect(input).toBeVisible();
+    await input.press(key);
+  }
+
+  async uploadFile(inputField: Element, file: Parameters<Locator['setInputFiles']>[0]) {
+    const input = this.getElement(inputField);
+    await input.setInputFiles(file);
   }
 }
