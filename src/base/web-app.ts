@@ -6,6 +6,7 @@ import { DashboardPage } from '@pages/DashboardPage';
 import { ProjectsPage } from '@pages/ProjectsPage';
 import { EmployeesManagementPage } from '@pages/EmployeesManagementPage';
 import { IssueAdLicensePage } from '@pages/IssueAdLicensePage';
+import { ProfileDetailsPage } from '@pages/ProfileDetailsPage';
 
 export class WebApp {
   page: Page;
@@ -15,6 +16,7 @@ export class WebApp {
   dashboardPage: InstanceType<typeof DashboardPage>;
   projectsPage: InstanceType<typeof ProjectsPage>;
   employeesManagementPage: InstanceType<typeof EmployeesManagementPage>;
+  profileDetailsPage: InstanceType<typeof ProfileDetailsPage>;
   issueAdLicensePage: InstanceType<typeof IssueAdLicensePage>;
 
   constructor(page: Page) {
@@ -26,6 +28,7 @@ export class WebApp {
     this.dashboardPage = new DashboardPage(page);
     this.projectsPage = new ProjectsPage(page);
     this.employeesManagementPage = new EmployeesManagementPage(page);
+    this.profileDetailsPage = new ProfileDetailsPage(page);
     this.issueAdLicensePage = new IssueAdLicensePage(page);
   }
 }

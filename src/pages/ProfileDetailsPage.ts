@@ -1,5 +1,4 @@
 import { expect, Page } from '@playwright/test';
-import { DashboardObjects } from '@objects/DashboardObjects';
 import { ProfileDetailsObjects } from '@objects/ProfileDetailsObjects';
 
 const LONG_TIMEOUT = 90_000;

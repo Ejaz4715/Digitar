@@ -56,7 +56,8 @@
       "sortOptions": {
         "region": "المنطقة",
         "lastLogin": "أحدث تسجيل الدخول"
-      },
+      }
+    },
     "issue-ad-license": {
       "userId": "1016549832",
       "searchValue": "6100003178",
