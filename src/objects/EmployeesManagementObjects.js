@@ -1,0 +1,26 @@
+'use strict';
+Object.defineProperty(exports, '__esModule', { value: true });
+exports.EmployeesManagementObjects = void 0;
+exports.EmployeesManagementObjects = {
+  addNewMemberButton: '.add_members button',
+  sortButton: '.member-sort-dropdown > button',
+  allUsersRadioButtons: 'app-add-user app-add-user-card #memberCheckbox',
+  addMemberToControlPanelButton: "//span[contains(text(),'أضف عضوًا (أعضاء) إلى لوحة التحكم')]/..",
+  allRolesCheckbox: "app-add-user-card app-multi-checkbox[formcontrolname='roles'] #selectAll",
+  allRegionsCheckbox: "app-add-user-card app-multi-checkbox[formcontrolname='regions'] #selectAll",
+  addUserErrorMessage: "//div[contains(text(),' يرجى ملء الدور والموقع والاشتراك لجميع المستخدمين المحددين')]",
+  addMemberSuccessMessage: "//span[contains(text(),' تم إرسال الدعوات بنجاح! ')]",
+  backButton: "//span[contains(text(),' رجوع ')]/..",
+  deactivateUserButton: "//button[contains(text(),'تعطيل المستخدم')]",
+  applyChangesButton: "//button[contains(text(),' تطبيق التغييرات ')]",
+  cancelUserActivation: "(//li/button[contains(text(),' إلغاء تنشيط المستخدم ')])[1]",
+  allUsernames: 'tbody > tr > td:nth-child(1) div.employee-name',
+  sortBy: (option) => `//div[contains(@class,'member-sort-dropdown')]//div[contains(@class,'enable-sorting')]//button[normalize-space()='${option}']`,
+  sortOptionsPanel: '.member-sort-dropdown .enable-sorting',
+  memberRowByName: (name) => `//tbody/tr[.//div[contains(@class,'employee-name') and normalize-space()='${name}']]`,
+  rowActionsButton: "img[alt='View More']",
+  rowDeactivateUserButton: "//ul[contains(@class,'dropdown-menu')]//button[normalize-space()='إلغاء تنشيط المستخدم']",
+  confirmDeactivateUserButton: "//div[contains(@class,'modal') and contains(@class,'show')]//button[normalize-space()='تعطيل المستخدم']",
+  allRegionCells: 'tbody > tr > td:nth-child(3)',
+  allLastLoginDates: 'tbody > tr > td:nth-child(1) .employee-details > span',
+};

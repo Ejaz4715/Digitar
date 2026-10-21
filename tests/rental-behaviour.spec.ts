@@ -6,7 +6,6 @@ import { logStep } from '@helpers/log-steps';
 import { LoginObjects } from '@objects/LoginObjects';
 
 const SERVICE = 'rental-behaviour';
-
 const readServiceData = () => DataHelper.readData().services[SERVICE];
 const readEnvironments = () => DataHelper.readData().environments;
 const writeServiceData = (key: string, value: any) => DataHelper.updateServiceData(SERVICE, key, value);
