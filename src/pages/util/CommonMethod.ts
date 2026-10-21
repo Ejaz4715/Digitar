@@ -49,7 +49,7 @@ export class CommonMethods {
   async clickElement(elementObject: Element) {
     const element = this.getElement(elementObject);
 
-    await this.page.waitForTimeout(3000);
+    await this.page.waitForTimeout(2000);
     await element.waitFor({ state: 'visible' });
     await element.click();
   }
@@ -57,7 +57,15 @@ export class CommonMethods {
   async verifyElementVisible(elementObject: Element) {
     const element = this.getElement(elementObject);
 
-    await expect(element).toBeVisible();
+    await element.waitFor({ state: 'visible' });
+  }
+
+  async verifyElementHasText(elementObject: Element, value: string) {
+    await expect(this.getElement(elementObject)).toContainText(value);
+  }
+
+  async getText(elementObject: Element) {
+    return this.getElement(elementObject).innerText();
   }
 
   async verifyEitherElementVisible(firstElement: Element, secondElement: Element) {

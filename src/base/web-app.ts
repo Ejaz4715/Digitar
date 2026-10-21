@@ -5,6 +5,8 @@ import { HomePage } from '@pages/HomePage';
 import { DashboardPage } from '@pages/DashboardPage';
 import { ProjectsPage } from '@pages/ProjectsPage';
 import { IssueAdLicensePage } from '@pages/IssueAdLicensePage';
+import { ReservationManagementPage } from '@pages/ReservationManagementPage';
+import { RentalBehaviourPage } from '@pages/RentalBehaviourPage';
 
 export class WebApp {
   page: Page;
@@ -14,6 +16,8 @@ export class WebApp {
   dashboardPage: InstanceType<typeof DashboardPage>;
   projectsPage: InstanceType<typeof ProjectsPage>;
   issueAdLicensePage: InstanceType<typeof IssueAdLicensePage>;
+  reservationManagementPage: InstanceType<typeof ReservationManagementPage>;
+  rentalBehaviourPage: InstanceType<typeof RentalBehaviourPage>;
 
   constructor(page: Page) {
     this.page = page;
@@ -24,5 +28,7 @@ export class WebApp {
     this.dashboardPage = new DashboardPage(page);
     this.projectsPage = new ProjectsPage(page);
     this.issueAdLicensePage = new IssueAdLicensePage(page);
+    this.reservationManagementPage = new ReservationManagementPage(page);
+    this.rentalBehaviourPage = new RentalBehaviourPage(page);
   }
 }
