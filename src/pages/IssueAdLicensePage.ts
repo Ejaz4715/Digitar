@@ -95,7 +95,7 @@ export class IssueAdLicensePage {
   //Verify the message and take the ad license number
   async verifySuccessMessageAndGetAdLicenseNumber() {
     await this.commonMethod.verifyElementVisible(IssueAdLicenseObjects.adLicneseNumber);
-    const licenseText = await this.page.locator(IssueAdLicenseObjects.adLicneseNumber.xpath).innerText();
+    const licenseText = await this.commonMethod.getText(IssueAdLicenseObjects.adLicneseNumber);
     const licenseNumber = licenseText.match(/رقم\s*#?(\d+)/)?.[1];
 
     if (!licenseNumber) {

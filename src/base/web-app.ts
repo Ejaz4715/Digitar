@@ -6,6 +6,8 @@ import { DashboardPage } from '@pages/DashboardPage';
 import { ProjectsPage } from '@pages/ProjectsPage';
 import { EmployeesManagementPage } from '@pages/EmployeesManagementPage';
 import { IssueAdLicensePage } from '@pages/IssueAdLicensePage';
+import { ReservationManagementPage } from '@pages/ReservationManagementPage';
+import { RentalBehaviourPage } from '@pages/RentalBehaviourPage';
 import { ProfileDetailsPage } from '@pages/ProfileDetailsPage';
 
 export class WebApp {
@@ -18,10 +20,11 @@ export class WebApp {
   employeesManagementPage: InstanceType<typeof EmployeesManagementPage>;
   profileDetailsPage: InstanceType<typeof ProfileDetailsPage>;
   issueAdLicensePage: InstanceType<typeof IssueAdLicensePage>;
+  reservationManagementPage: InstanceType<typeof ReservationManagementPage>;
+  rentalBehaviourPage: InstanceType<typeof RentalBehaviourPage>;
 
   constructor(page: Page) {
     this.page = page;
-    this.loginPage = new LoginPage(page);
     this.homePage = new HomePage(page);
     this.loginPage = new LoginPage(page);
     this.commonMethods = new CommonMethods(page);
@@ -30,5 +33,7 @@ export class WebApp {
     this.employeesManagementPage = new EmployeesManagementPage(page);
     this.profileDetailsPage = new ProfileDetailsPage(page);
     this.issueAdLicensePage = new IssueAdLicensePage(page);
+    this.reservationManagementPage = new ReservationManagementPage(page);
+    this.rentalBehaviourPage = new RentalBehaviourPage(page);
   }
 }

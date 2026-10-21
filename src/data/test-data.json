@@ -1,7 +1,8 @@
 {
   "environments": {
     "broker": "https://stg-digitar-sakani.housingapps.sa/",
-    "developer": "https://pre-sakani-partners.housingapps.sa/auth"
+    "developer": "https://stg-partners-sakani.housingapps.sa/",
+    "ejar": "https://uat-ejar3.housingapps.sa/ar"
   },
   "services": {
     "login": {
@@ -63,6 +64,18 @@
       "searchValue": "6100003178",
       "adLicemseNubmer": "7200003224",
       "editDescription": "Edit Description"
+    },
+    "reservation-management": {
+      "userId": "1012204739",
+      "userForBook": "1019075926",
+      "developerId": "1782884547",
+      "unitCode": "01-01-0002-86-2194"
+    },
+    "rental-behaviour": {
+      "boId": "1025071984",
+      "tenantId": "1082683978",
+      "tenantPassword": "EJARPassword123",
+      "requestNumber": "HPHSKN6D"
     }
   }
 }
