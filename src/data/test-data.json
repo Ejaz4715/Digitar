@@ -36,6 +36,27 @@
         "unitState": "نشط",
         "beneficiaryState": "غير مستفيد"
       }
+    },
+    "profile-management": {
+      "userId": "1016549832",
+      "experience": "6-10 سنوات من الخبرة",
+      "employmentStatus": "موظف",
+      "companyName": "crew",
+      "description": "مكتب عقاري مختص من 10 سنوات جديد",
+      "propertySpecifications": ["عقارات سكنية", "عقارات تجارية", "منشآت صناعية"],
+      "brokerageSpecifications": ["تأجير الممتلكات", "مبيعات الممتلكات", "إدارة الممتلكات"],
+      "profileImage": "src/data/files/profile-image.png",
+      "companyProfileName": "شركة مأوى الحلول للخدمات العقارية",
+      "companyWebsite": "https://www.digitar.com"
+    },
+    "manage-staff": {
+      "userId": "1016549832",
+      "companyProfileName": "شركة مأوى الحلول للخدمات العقارية",
+      "memberToRemove": "احمد المولد",
+      "sortOptions": {
+        "region": "المنطقة",
+        "lastLogin": "أحدث تسجيل الدخول"
+      }
     }
   }
 }
