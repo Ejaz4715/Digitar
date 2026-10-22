@@ -1,7 +1,9 @@
 import fs from 'fs';
 import path from 'path';
+import type { Page } from '@playwright/test';
 
 const dataFilePath = path.resolve(process.cwd(), 'src/data/test-data.json');
+const apiResponseDirectory = path.resolve(process.cwd(), 'src/data/APIResponse');
 
 export class DataHelper {
   /**
@@ -14,7 +16,7 @@ export class DataHelper {
 
   /**
    * Updates an existing key or creates a new key-value pair in test-data.json
-   * 
+   *
    * @param serviceName - Target service (e.g., 'login', 'booking')
    * @param key - Field key to update or insert
    * @param value - New value to set
@@ -37,5 +39,76 @@ export class DataHelper {
 
     // Write updated JSON back to disk with formatted 2-space indentation
     fs.writeFileSync(dataFilePath, JSON.stringify(currentData, null, 2), 'utf-8');
+  }
+
+  static async recordReferenceResponse(page: Page, requestNumber: string): Promise<void> {
+    const response = await page.waitForResponse(
+      async (candidate) => {
+        const contentType = candidate.headers()['content-type'] ?? '';
+        if (!candidate.ok() || !['xhr', 'fetch'].includes(candidate.request().resourceType()) || !contentType.includes('json')) {
+          return false;
+        }
+
+        return this.findReference(await candidate.json()) !== undefined;
+      },
+      { timeout: 30_000 }
+    );
+    const responseBody: unknown = await response.json();
+
+    const currentData = this.readData();
+    const rentalBehaviourData = currentData.services?.['rental-behaviour'];
+    if (!rentalBehaviourData || String(rentalBehaviourData.requestNumber) !== requestNumber) {
+      throw new Error(`Request number "${requestNumber}" was not found in rental-behaviour test data.`);
+    }
+
+    fs.mkdirSync(apiResponseDirectory, { recursive: true });
+    const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
+    const safeRequestNumber = requestNumber.replace(/[^a-zA-Z0-9_-]/g, '_');
+    const responseFilePath = path.join(apiResponseDirectory, `${timestamp}-${safeRequestNumber}.json`);
+    fs.writeFileSync(responseFilePath, JSON.stringify(responseBody, null, 2), 'utf-8');
+
+    let reference: string | undefined;
+    try {
+      const savedResponse: unknown = JSON.parse(fs.readFileSync(responseFilePath, 'utf-8'));
+      reference = this.findReference(savedResponse);
+    } finally {
+      fs.unlinkSync(responseFilePath);
+    }
+
+    if (!reference) {
+      throw new Error(`The API response for request "${requestNumber}" did not contain a reference.`);
+    }
+
+    rentalBehaviourData.ejarReference = reference;
+    fs.writeFileSync(dataFilePath, JSON.stringify(currentData, null, 2), 'utf-8');
+  }
+
+  private static findReference(value: unknown): string | undefined {
+    if (Array.isArray(value)) {
+      for (const item of value) {
+        const reference = this.findReference(item);
+        if (reference) {
+          return reference;
+        }
+      }
+      return undefined;
+    }
+
+    if (!value || typeof value !== 'object') {
+      return undefined;
+    }
+
+    for (const [key, item] of Object.entries(value)) {
+      if (key === 'reference' && (typeof item === 'string' || typeof item === 'number') && String(item).trim()) {
+        return String(item);
+      }
+
+      const reference = this.findReference(item);
+      if (reference) {
+        return reference;
+      }
+    }
+
+    return undefined;
   }
 }
