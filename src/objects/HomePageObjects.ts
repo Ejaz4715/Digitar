@@ -7,4 +7,5 @@ export const HomePageObjects = {
   languageSwitcherButton: { css: 'app-header > header > nav button.language-switcher' },
   dashboardIconButton: { xpath: "//span[contains(text(),'لوحة التحكم')]/.." },
   projectsIconButton: { xpath: "//span[contains(text(),'المشاريع')]/.." },
+  availableOpportunities: "//img[@alt='الفرص المتاحة']/..",
 } as const;
