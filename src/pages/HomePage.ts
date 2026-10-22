@@ -43,4 +43,10 @@ export class HomePage {
     await this.page.locator(HomePageObjects.projectsIconButton.xpath).click();
     await this.page.waitForTimeout(10000);
   }
+
+  async navigateToAvailableOpportunities() {
+    await this.page.locator(HomePageObjects.availableOpportunities).waitFor({ state: 'visible', timeout: 30_000 });
+    await this.page.locator(HomePageObjects.availableOpportunities).click();
+    await this.page.waitForTimeout(10000);
+  }
 }
