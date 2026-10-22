@@ -70,10 +70,16 @@ test.describe('Rental Behaviour', () => {
     await app.rentalBehaviourPage.selectRoleIfNeeded('مستأجر');
     await logStep('Step 03: Navigate to the requests');
     await app.rentalBehaviourPage.clickOnTheRequestsTabButton();
+    const referenceResponse = DataHelper.recordReferenceResponse(page, String(requestNumber));
     await app.rentalBehaviourPage.clickOnViewRequestsOption();
+    await referenceResponse;
     await logStep('Step 04: Filter by request number > Navigate to it');
     await app.rentalBehaviourPage.clickOnFilterButton();
-    await app.rentalBehaviourPage.enterRequestNumber(requestNumber);
+    const ejarReference = readServiceData().ejarReference;
+    if (!ejarReference) {
+      throw new Error(`No ejarReference was saved for request "${requestNumber}".`);
+    }
+    await app.rentalBehaviourPage.enterRequestNumber(ejarReference);
     await app.rentalBehaviourPage.clickOnKebabutton();
     await app.rentalBehaviourPage.selectViewTheRequest();
     await logStep('Step 05: Check on the terms and condition > Approve and confirm > Veriy the successful message');
@@ -84,5 +90,39 @@ test.describe('Rental Behaviour', () => {
     await app.rentalBehaviourPage.clickOnVerifyButton();
     await app.rentalBehaviourPage.handlePopupCloseButtons();
     await app.rentalBehaviourPage.verifySuccessfullApprovalMessage();
+  });
+  test('TC-03 User pay rental behavior request', { annotation: [{ product: 'Digitar Broker', type: 'critical' }] as any }, async ({ page }) => {
+    test.setTimeout(0);
+    //read data from json relative to the service
+    const environment = readEnvironments();
+    const data = readServiceData();
+    const app = new WebApp(page);
+    const boId = data.boId;
+    const tenantId = data.tenantId;
+    const digitarUrl = environment.broker;
+    const requestNumber = data.requestNumber;
+
+    await logStep('Step 01: Login to digitar portal as a broker');
+    await app.loginPage.gotoHomePage(digitarUrl);
+    await app.loginPage.clickLoginButtonFromMain();
+    await logStep('Step 02: Accept cookies');
+    await app.loginPage.acceptCookies();
+    await logStep('Step 03: Enter user id and login');
+    await app.commonMethods.clickElement(LoginObjects.continueWithNafathButton);
+    await app.commonMethods.fill(LoginObjects.nafathIdInput, boId);
+    await app.loginPage.clickContinueButton();
+    await app.loginPage.waitForNafathPromptToDisappear();
+    await logStep('Step 04: Check the pop ups if exist');
+    await app.commonMethods.clickIfVisible(LoginObjects.cancelButton, { timeout: 20000 });
+    await app.commonMethods.clickIfVisible(LoginObjects.laterButton);
+    await app.commonMethods.clickIfVisible(LoginObjects.doneButton);
+    await logStep('Step 05: Navigate to rental behaviour > Click on new request button');
+    await app.rentalBehaviourPage.clickOnRentalBehaviourButton();
+    await app.rentalBehaviourPage.clickOnReportsButton();
+    await app.rentalBehaviourPage.searchForRequestNumber(requestNumber);
+    await app.rentalBehaviourPage.clickOnDotsButton();
+    await app.rentalBehaviourPage.clickOnPayFeesOptionButton();
+    await app.rentalBehaviourPage.clickOnProceedToPayButton();
+    await app.issueAdLicensePage.fillCardDetails();
   });
 });

@@ -106,6 +106,7 @@ export class RentalBehaviourPage {
   }
   //Enter request number
   async enterRequestNumber(requestNumber: string | number) {
+    await this.page.waitForTimeout(3000);
     await this.commonMethod.fill(RentalBehaviourObjects.requestNumberInputfield, String(requestNumber));
   }
   //Click on kebab button
@@ -114,6 +115,7 @@ export class RentalBehaviourPage {
   }
   //Select view requset kebab button
   async selectViewTheRequest() {
+    await this.page.waitForTimeout(3000);
     this.commonMethod.clickElement(RentalBehaviourObjects.viewRequesKebabOption);
   }
   //Check on terms and conditions
@@ -145,8 +147,33 @@ export class RentalBehaviourPage {
       }
       throw error;
     }
-
     await alert.locator('button.close-button').click({ force: true });
     await alert.waitFor({ state: 'hidden' });
+  }
+  //Payment
+  //Click on reports button
+  async clickOnReportsButton() {
+    await this.page.waitForTimeout(2000);
+    this.commonMethod.clickElement(RentalBehaviourObjects.reportsButton);
+  }
+  //Search request number
+  async searchForRequestNumber(searchFoRequestNumber: string | number) {
+    await this.page.waitForTimeout(3000);
+    await this.commonMethod.fill(RentalBehaviourObjects.requestSearchInputfield, String(searchFoRequestNumber));
+  }
+  //Click on dots button
+  async clickOnDotsButton() {
+    await this.page.waitForTimeout(2000);
+    this.commonMethod.clickElement(RentalBehaviourObjects.dotsButton);
+  }
+  //Click on pay fees option button
+  async clickOnPayFeesOptionButton() {
+    await this.page.waitForTimeout(2000);
+    this.commonMethod.clickElement(RentalBehaviourObjects.payFeesOptionButton);
+  }
+  //Click on proceed to pay button
+  async clickOnProceedToPayButton() {
+    await this.page.waitForTimeout(2000);
+    this.commonMethod.clickElement(RentalBehaviourObjects.proceedToPayButton);
   }
 }

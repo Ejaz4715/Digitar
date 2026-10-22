@@ -22,6 +22,22 @@ export const RentalBehaviourObjects = {
   requestNumber: {
     xpath: "(//div[@class='datatable-body-cell-label'])[1]",
   },
+  //Payment
+  reportsButton: {
+    xpath: "//button[text()=' التقارير ']",
+  },
+  requestSearchInputfield: {
+    xpath: "//input[@type='text']",
+  },
+  dotsButton: {
+    xpath: "//button[contains(@class,'action-button')]",
+  },
+  payFeesOptionButton: {
+    xpath: "//button[text()=' دفع الرسوم ']",
+  },
+  proceedToPayButton: {
+    xpath: "//span[text()=' المتابعة إلى الدفع ']",
+  },
   //EJAR
   userNameOrIdInputfield: {
     xpath: "//input[@data-name='username']",
