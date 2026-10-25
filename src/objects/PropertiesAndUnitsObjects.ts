@@ -2,7 +2,7 @@ export const PropertiesAndUnitsObjects = {
   propertiesAndUnitsButton: {
     xpath: "//span[contains(text(),'العقارات والوحدات')]",
   },
-  propertiesAndUnitsDropdwonList: {
+  propertiesAndUnitsDropdownList: {
     xpath: '//app-portfolio-selection-dropdown',
   },
   unitsOption: {

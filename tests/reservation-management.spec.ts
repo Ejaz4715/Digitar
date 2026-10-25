@@ -13,7 +13,6 @@ const writeServiceData = (key: string, value: any) => DataHelper.updateServiceDa
 
 test.describe('Reservation Management', () => {
   test('TC-01 User create new reservation', { annotation: [{ product: 'Digitar Broker', type: 'critical' }] as any }, async ({ page }) => {
-    test.setTimeout(0);
     //read data from json relative to the service
     const environment = readEnvironments();
     const data = readServiceData();
@@ -49,14 +48,13 @@ test.describe('Reservation Management', () => {
     await logStep('Step 08: Select bank > Click on next button');
     await app.reservationManagementPage.selectBank();
     await app.reservationManagementPage.clickOnNextButton();
-    await logStep('Step 09 Take unit code > Click on confirm reservation button > Verfiy the successful reservation message');
+    await logStep('Step 09 Take unit code > Click on confirm reservation button > Verify the successful reservation message');
     const unitCode = await app.reservationManagementPage.takeTheUnitCode();
     writeServiceData('unitCode', unitCode);
     await app.reservationManagementPage.clickOnConfirmReservationButton();
-    await app.reservationManagementPage.verifySuccessfullReservationMessage();
+    await app.reservationManagementPage.verifySuccessfulReservationMessage();
   });
-  test('TC-02 Verify user view the reserved unit in Partener side', { annotation: [{ product: 'Digitar Broker', type: 'critical' }] as any }, async ({ page }) => {
-    test.setTimeout(0);
+  test('TC-02 Verify user view the reserved unit in Partners side', { annotation: [{ product: 'Digitar Broker', type: 'critical' }] as any }, async ({ page }) => {
     //read data from json relative to the service
     const environment = readEnvironments();
     const data = readServiceData();
@@ -76,7 +74,6 @@ test.describe('Reservation Management', () => {
     await app.reservationManagementPage.verifyTheReservedUnitIsReflectInPartners(unitCode);
   });
   test('TC-03 Verify user cancel the reserved unit', { annotation: [{ product: 'Digitar Broker', type: 'critical' }] as any }, async ({ page }) => {
-    test.setTimeout(0);
     //read data from json relative to the service
     const environment = readEnvironments();
     const data = readServiceData();
@@ -102,14 +99,14 @@ test.describe('Reservation Management', () => {
     await logStep('Step 05: Navigate to reservation management > Search for the unit > View unit details');
     await app.reservationManagementPage.clickOnReservationManagementButton();
     await app.reservationManagementPage.searchForUnitCode(unitCode);
-    await app.reservationManagementPage.clickOnViewDetailsnButton();
+    await app.reservationManagementPage.clickOnViewDetailsButton();
     await logStep('Step 06: Navigate to reservation details > Select reason to cancel');
-    await app.reservationManagementPage.clickOnReservationDetailsnTabButton();
+    await app.reservationManagementPage.clickOnReservationDetailsTabButton();
     await app.reservationManagementPage.selectCancelReservationReason();
-    await logStep('Step 07: Click cancel reservation > Click on yes cnacel');
+    await logStep('Step 07: Click cancel reservation > Click on yes cancel');
     await app.reservationManagementPage.clickOnCancelReservationButton();
     await app.reservationManagementPage.clickOnYesCancelButton();
-    await logStep('Step 08: Enter otp then confrim code > Verify the reservation status is canceled');
+    await logStep('Step 08: Enter otp then confirm code > Verify the reservation status is canceled');
     await app.reservationManagementPage.enterOTPCode();
     await app.reservationManagementPage.clickOnConfirmCodeButton();
     await app.reservationManagementPage.verifyTheReservationStatusIsCanceled('ملغي');

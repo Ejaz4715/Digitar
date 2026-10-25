@@ -67,7 +67,7 @@
     "issue-ad-license": {
       "userId": "1016549832",
       "searchValue": "6100003178",
-      "adLicemseNubmer": "7200003224",
+      "adLicenseNumber": "7200003224",
       "editDescription": "Edit Description"
     },
     "reservation-management": {
@@ -76,10 +76,11 @@
       "developerId": "1782884547",
       "unitCode": "01-01-0002-86-2194"
     },
-    "rental-behaviour": {
+    "rental-behavior": {
       "boId": "1025071984",
       "tenantId": "1082683978",
       "tenantPassword": "EJARPassword123",
+      "role": "مستأجر",
       "requestNumber": "REQ-20261022-9YFWEO9P",
       "ejarReference": "X2W32ABX"
     }

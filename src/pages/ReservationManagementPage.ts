@@ -21,11 +21,11 @@ export class ReservationManagementPage {
   }
   //Click on reservation management from side menu
   async clickOnReservationManagementButton() {
-    this.commonMethod.clickElement(ReservationManagementObjects.reservationManagementButton);
+    await this.commonMethod.clickElement(ReservationManagementObjects.reservationManagementButton);
   }
   //Click on new reservation button
   async clickOnNewReservationButton() {
-    this.commonMethod.clickElement(ReservationManagementObjects.newReservationButton);
+    await this.commonMethod.clickElement(ReservationManagementObjects.newReservationButton);
   }
   //Enter national id
   async enterNationalId(id: string | number) {
@@ -34,37 +34,37 @@ export class ReservationManagementPage {
   //Click on search button
   async clickOnSearchButton() {
     await this.page.waitForTimeout(2000);
-    this.commonMethod.clickElement(ReservationManagementObjects.searchButton);
+    await this.commonMethod.clickElement(ReservationManagementObjects.searchButton);
   }
   //Click on next button
   async clickOnNextButton() {
     await this.page.waitForTimeout(2000);
-    this.commonMethod.clickElement(ReservationManagementObjects.nextButton);
+    await this.commonMethod.clickElement(ReservationManagementObjects.nextButton);
   }
   //Select first unit
   async selectUnit() {
     await this.page.waitForTimeout(2000);
-    this.commonMethod.clickElement(ReservationManagementObjects.firstUnitCheckbox);
+    await this.commonMethod.clickElement(ReservationManagementObjects.firstUnitCheckbox);
   }
   //Select bank - Albilad
   async selectBank() {
-    const bankSelect = this.page.locator(ReservationManagementObjects.bankDropddownList.xpath);
+    const bankSelect = this.page.locator(ReservationManagementObjects.bankDropdownList.xpath);
     await bankSelect.selectOption({ label: ' بنك البلاد ' });
   }
   //Click on confirm reservation button
   async clickOnConfirmReservationButton() {
     await this.page.waitForTimeout(2000);
-    this.commonMethod.clickElement(ReservationManagementObjects.confirmReservationButton);
+    await this.commonMethod.clickElement(ReservationManagementObjects.confirmReservationButton);
   }
   //Take the unit code
   async takeTheUnitCode() {
-    return this.commonMethod.getText(ReservationManagementObjects.unitCode);
+    return await this.commonMethod.getText(ReservationManagementObjects.unitCode);
   }
 
-  //Verify the successfull reservation message
-  async verifySuccessfullReservationMessage() {
+  //Verify the successful reservation message
+  async verifySuccessfulReservationMessage() {
     await this.page.waitForTimeout(10000);
-    this.commonMethod.verifyElementVisible(ReservationManagementObjects.successReservationMessage);
+    await this.commonMethod.verifyElementVisible(ReservationManagementObjects.successReservationMessage);
   }
   //Search for unit code
   async searchForUnitCode(unitCode: string | number) {
@@ -72,29 +72,29 @@ export class ReservationManagementPage {
   }
 
   //Click on view details button - the first
-  async clickOnViewDetailsnButton() {
+  async clickOnViewDetailsButton() {
     await this.page.waitForTimeout(5000);
-    this.commonMethod.clickElement(ReservationManagementObjects.viewDetailsButton);
+    await this.commonMethod.clickElement(ReservationManagementObjects.viewDetailsButton);
   }
-  //Click on resrvation details tab button
-  async clickOnReservationDetailsnTabButton() {
+  //Click on reservation details tab button
+  async clickOnReservationDetailsTabButton() {
     await this.page.waitForTimeout(3000);
-    this.commonMethod.clickElement(ReservationManagementObjects.reservationDetailsTabButton);
+    await this.commonMethod.clickElement(ReservationManagementObjects.reservationDetailsTabButton);
   }
   //Select reason to canle the resrvation - project moved
   async selectCancelReservationReason() {
-    const reasonSelect = this.page.locator(ReservationManagementObjects.reservationCancelReasonDrodpwnList.xpath);
+    const reasonSelect = this.page.locator(ReservationManagementObjects.reservationCancelReasonDropdownList.xpath);
     await reasonSelect.selectOption({ label: ' الانتقال لمشروع آخر ' });
   }
-  //Click on cancel resrvation button
+  //Click on cancel reservation button
   async clickOnCancelReservationButton() {
     await this.page.waitForTimeout(3000);
-    this.commonMethod.clickElement(ReservationManagementObjects.reservationCancelButton);
+    await this.commonMethod.clickElement(ReservationManagementObjects.reservationCancelButton);
   }
   //Click on yes cancel button
   async clickOnYesCancelButton() {
     await this.page.waitForTimeout(3000);
-    this.commonMethod.clickElement(ReservationManagementObjects.yesCancelButton);
+    await this.commonMethod.clickElement(ReservationManagementObjects.yesCancelButton);
   }
   //Enter OTP 1234
   async enterOTPCode(otp = ['1', '2', '3', '4']) {
@@ -107,14 +107,14 @@ export class ReservationManagementPage {
   //Click on confirm code
   async clickOnConfirmCodeButton() {
     await this.page.waitForTimeout(3000);
-    this.commonMethod.clickElement(ReservationManagementObjects.confirmCodeButton);
+    await this.commonMethod.clickElement(ReservationManagementObjects.confirmCodeButton);
   }
   //Verify the resrvation status in canceled
   async verifyTheReservationStatusIsCanceled(value: string) {
     await this.page.waitForTimeout(7000);
-    this.commonMethod.verifyElementHasText(ReservationManagementObjects.reservationStatus, value);
+    await this.commonMethod.verifyElementHasText(ReservationManagementObjects.reservationStatus, value);
   }
-  //Remaining methods from sakani partenrs
+  //Remaining methods from sakani partners
   async clickIfVisible(locator: Locator, options: { timeout?: number } = {}) {
     const timeout = options.timeout ?? 5000;
     const isVisible = await locator.isVisible({ timeout }).catch(() => false);
@@ -230,6 +230,6 @@ export class ReservationManagementPage {
   }
   async verifyTheReservedUnitIsReflectInPartners(value: string) {
     await this.page.waitForTimeout(5000);
-    this.commonMethod.verifyElementHasText(ReservationManagementObjects.reservedUniCode, value);
+    await this.commonMethod.verifyElementHasText(ReservationManagementObjects.reservedUniCode, value);
   }
 }
