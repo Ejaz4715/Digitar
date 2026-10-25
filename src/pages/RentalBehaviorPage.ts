@@ -31,7 +31,7 @@ export class RentalBehaviorPage {
   //Verify the successful message
   async verifySuccessfulMessage() {
     await this.page.waitForTimeout(10000);
-    await this.commonMethod.verifyElementVisible(RentalBehaviorObjects.succesfulMessage);
+    await this.commonMethod.verifyElementVisible(RentalBehaviorObjects.successfulMessage);
   }
   //Click on view requests button
   async clickOnViewRequestButton() {
@@ -47,7 +47,7 @@ export class RentalBehaviorPage {
   async enterUsernameOrNationalId(id: string | number) {
     await this.commonMethod.fill(RentalBehaviorObjects.userNameOrIdInputfield, String(id));
   }
-  //Enter passowrd
+  //Enter password
   async enterPassword(password: string | number) {
     await this.commonMethod.fill(RentalBehaviorObjects.passwordInputfield, String(password));
   }
