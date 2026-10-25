@@ -5,14 +5,13 @@ import { DataHelper } from '@helpers/data-helper';
 import { logStep } from '@helpers/log-steps';
 import { LoginObjects } from '@objects/LoginObjects';
 
-const SERVICE = 'rental-behaviour';
+const SERVICE = 'rental-behavior';
 const readServiceData = () => DataHelper.readData().services[SERVICE];
 const readEnvironments = () => DataHelper.readData().environments;
 const writeServiceData = (key: string, value: any) => DataHelper.updateServiceData(SERVICE, key, value);
 
-test.describe('Rental Behaviour', () => {
-  test('TC-01 User submit rental behaviour request', { annotation: [{ product: 'Digitar Broker', type: 'critical' }] as any }, async ({ page }) => {
-    test.setTimeout(0);
+test.describe('Rental Behavior', () => {
+  test('TC-01 User submit rental behavior request', { annotation: [{ product: 'Digitar Broker', type: 'critical' }] as any }, async ({ page }) => {
     //read data from json relative to the service
     const environment = readEnvironments();
     const data = readServiceData();
@@ -35,20 +34,19 @@ test.describe('Rental Behaviour', () => {
     await app.commonMethods.clickIfVisible(LoginObjects.cancelButton, { timeout: 20000 });
     await app.commonMethods.clickIfVisible(LoginObjects.laterButton);
     await app.commonMethods.clickIfVisible(LoginObjects.doneButton);
-    await logStep('Step 05: Navigate to rental behaviour > Click on new request button');
-    await app.rentalBehaviourPage.clickOnRentalBehaviourButton();
-    await app.rentalBehaviourPage.clickOnNewRequestButton();
+    await logStep('Step 05: Navigate to rental behavior > Click on new request button');
+    await app.rentalBehaviorPage.clickOnRentalBehaviorButton();
+    await app.rentalBehaviorPage.clickOnNewRequestButton();
     await logStep('Step 06: Enter tenant id > Click on send request button');
-    await app.rentalBehaviourPage.enterNationalId(tenantId);
-    await app.rentalBehaviourPage.clickOnSendRequestButton();
+    await app.rentalBehaviorPage.enterNationalId(tenantId);
+    await app.rentalBehaviorPage.clickOnSendRequestButton();
     await logStep('Step 07: Verify the successful message > Take request number');
-    await app.rentalBehaviourPage.verifySuccessfullMessage();
-    await app.rentalBehaviourPage.clickOnViewRequestButton();
-    const requestNumber = await app.rentalBehaviourPage.getTheRequestNumber();
+    await app.rentalBehaviorPage.verifySuccessfulMessage();
+    await app.rentalBehaviorPage.clickOnViewRequestButton();
+    const requestNumber = await app.rentalBehaviorPage.getTheRequestNumber();
     writeServiceData('requestNumber', requestNumber);
   });
   test('TC-02 User approve the rental behavior request', { annotation: [{ product: 'Digitar Broker', type: 'critical' }] as any }, async ({ page }) => {
-    test.setTimeout(0);
     //read data from json relative to the service
     const environment = readEnvironments();
     const data = readServiceData();
@@ -57,42 +55,42 @@ test.describe('Rental Behaviour', () => {
     const tenantPassword = data.tenantPassword;
     const ejarUrl = environment.ejar;
     const requestNumber = data.requestNumber;
+    const role = data.role;
 
     await logStep('Step 01: Login to ejar portal as tenant');
     await app.loginPage.gotoHomePage(ejarUrl);
-    await app.rentalBehaviourPage.enterUsernameOrNationalId(tenantId);
-    await app.rentalBehaviourPage.enterPassword(tenantPassword);
-    await app.rentalBehaviourPage.clickOnLoginButton();
-    await app.rentalBehaviourPage.enterOTPCode(1234);
-    await app.rentalBehaviourPage.clickOnVerifyButton();
-    await app.rentalBehaviourPage.handlePopupCloseButtons();
+    await app.rentalBehaviorPage.enterUsernameOrNationalId(tenantId);
+    await app.rentalBehaviorPage.enterPassword(tenantPassword);
+    await app.rentalBehaviorPage.clickOnLoginButton();
+    await app.rentalBehaviorPage.enterOTPCode(1234);
+    await app.rentalBehaviorPage.clickOnVerifyButton();
+    await app.rentalBehaviorPage.handlePopupCloseButtons();
     await logStep('Step 02: Change role to tenant');
-    await app.rentalBehaviourPage.selectRoleIfNeeded('مستأجر');
+    await app.rentalBehaviorPage.selectRoleIfNeeded(role);
     await logStep('Step 03: Navigate to the requests');
-    await app.rentalBehaviourPage.clickOnTheRequestsTabButton();
+    await app.rentalBehaviorPage.clickOnTheRequestsTabButton();
     const referenceResponse = DataHelper.recordReferenceResponse(page, String(requestNumber));
-    await app.rentalBehaviourPage.clickOnViewRequestsOption();
+    await app.rentalBehaviorPage.clickOnViewRequestsOption();
     await referenceResponse;
     await logStep('Step 04: Filter by request number > Navigate to it');
-    await app.rentalBehaviourPage.clickOnFilterButton();
+    await app.rentalBehaviorPage.clickOnFilterButton();
     const ejarReference = readServiceData().ejarReference;
     if (!ejarReference) {
       throw new Error(`No ejarReference was saved for request "${requestNumber}".`);
     }
-    await app.rentalBehaviourPage.enterRequestNumber(ejarReference);
-    await app.rentalBehaviourPage.clickOnKebabutton();
-    await app.rentalBehaviourPage.selectViewTheRequest();
-    await logStep('Step 05: Check on the terms and condition > Approve and confirm > Veriy the successful message');
-    await app.rentalBehaviourPage.checkOnTermsAndConditions();
-    await app.rentalBehaviourPage.clickOnApproveButton();
-    await app.rentalBehaviourPage.clickOnConfirmButton();
-    await app.rentalBehaviourPage.enterOTPCode(1234);
-    await app.rentalBehaviourPage.clickOnVerifyButton();
-    await app.rentalBehaviourPage.handlePopupCloseButtons();
-    await app.rentalBehaviourPage.verifySuccessfullApprovalMessage();
+    await app.rentalBehaviorPage.enterRequestNumber(ejarReference);
+    await app.rentalBehaviorPage.clickOnKebabButton();
+    await app.rentalBehaviorPage.selectViewTheRequest();
+    await logStep('Step 05: Check on the terms and condition > Approve and confirm > Verify the successful message');
+    await app.rentalBehaviorPage.checkOnTermsAndConditions();
+    await app.rentalBehaviorPage.clickOnApproveButton();
+    await app.rentalBehaviorPage.clickOnConfirmButton();
+    await app.rentalBehaviorPage.enterOTPCode(1234);
+    await app.rentalBehaviorPage.clickOnVerifyButton();
+    await app.rentalBehaviorPage.handlePopupCloseButtons();
+    await app.rentalBehaviorPage.verifySuccessfulApprovalMessage();
   });
   test('TC-03 User pay rental behavior request', { annotation: [{ product: 'Digitar Broker', type: 'critical' }] as any }, async ({ page }) => {
-    test.setTimeout(0);
     //read data from json relative to the service
     const environment = readEnvironments();
     const data = readServiceData();
@@ -116,13 +114,13 @@ test.describe('Rental Behaviour', () => {
     await app.commonMethods.clickIfVisible(LoginObjects.cancelButton, { timeout: 20000 });
     await app.commonMethods.clickIfVisible(LoginObjects.laterButton);
     await app.commonMethods.clickIfVisible(LoginObjects.doneButton);
-    await logStep('Step 05: Navigate to rental behaviour > Click on new request button');
-    await app.rentalBehaviourPage.clickOnRentalBehaviourButton();
-    await app.rentalBehaviourPage.clickOnReportsButton();
-    await app.rentalBehaviourPage.searchForRequestNumber(requestNumber);
-    await app.rentalBehaviourPage.clickOnDotsButton();
-    await app.rentalBehaviourPage.clickOnPayFeesOptionButton();
-    await app.rentalBehaviourPage.clickOnProceedToPayButton();
+    await logStep('Step 05: Navigate to rental behavior > Click on new request button');
+    await app.rentalBehaviorPage.clickOnRentalBehaviorButton();
+    await app.rentalBehaviorPage.clickOnReportsButton();
+    await app.rentalBehaviorPage.searchForRequestNumber(requestNumber);
+    await app.rentalBehaviorPage.clickOnDotsButton();
+    await app.rentalBehaviorPage.clickOnPayFeesOptionButton();
+    await app.rentalBehaviorPage.clickOnProceedToPayButton();
     await app.issueAdLicensePage.fillCardDetails();
   });
 });

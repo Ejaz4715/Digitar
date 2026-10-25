@@ -19,7 +19,7 @@ export const ReservationManagementObjects = {
   firstUnitCheckbox: {
     xpath: "(//input[@type='checkbox'])[1]",
   },
-  bankDropddownList: {
+  bankDropdownList: {
     xpath: "//select[@id='bankSelect']",
   },
   bankOption: {
@@ -45,7 +45,7 @@ export const ReservationManagementObjects = {
     role: 'button',
     name: 'تفاصيل الحجز',
   },
-  reservationCancelReasonDrodpwnList: {
+  reservationCancelReasonDropdownList: {
     xpath: "//span[text()=' إلغاء الحجز ']/parent::div/descendant::select",
   },
   reservationCancelReasonOption: {

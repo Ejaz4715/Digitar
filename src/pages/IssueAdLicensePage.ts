@@ -16,86 +16,88 @@ export class IssueAdLicensePage {
 
   //Click on issue button from dashboard
   async clickOnIssueButton() {
-    this.commonMethod.clickElement(IssueAdLicenseObjects.issueButton);
+    await this.commonMethod.clickElement(IssueAdLicenseObjects.issueButton);
   }
   //Click on ad license buttom
   async clickOnAdLicenseButton() {
-    this.commonMethod.clickElement(IssueAdLicenseObjects.adLicenseButton);
+    await this.commonMethod.clickElement(IssueAdLicenseObjects.adLicenseButton);
+    await this.page.waitForTimeout(5000);
   }
 
-  //Searh for brokerage contract number or second party name
+  //Search for brokerage contract number or second party name
   async SearchForBrokerageContractNumberOrSecondPartyNameAndSelect(search: string) {
-    this.commonMethod.fill(IssueAdLicenseObjects.searchInputfield, search);
+    await this.commonMethod.fill(IssueAdLicenseObjects.searchInputfield, search);
     await this.page.waitForTimeout(5000);
-    this.commonMethod.clickElement(IssueAdLicenseObjects.searchedResultCard);
+    await this.commonMethod.clickElement(IssueAdLicenseObjects.searchedResultCard);
   }
 
   //Click on confirm and continue
   async clickOnConfirmAndContinueButton() {
     await this.page.waitForTimeout(5000);
-    this.commonMethod.clickElement(IssueAdLicenseObjects.confirmAndContinueButton);
+    await this.commonMethod.clickElement(IssueAdLicenseObjects.confirmAndContinueButton);
   }
   //Select listing channel - liscensed platform
   async selectListingChannel() {
-    this.commonMethod.clickElement(IssueAdLicenseObjects.listingChannelDropdownList);
-    this.commonMethod.clickElement(IssueAdLicenseObjects.listingChannelOption);
+    await this.page.waitForTimeout(3000);
+    await this.commonMethod.clickElement(IssueAdLicenseObjects.listingChannelDropdownList);
+    await this.commonMethod.clickElement(IssueAdLicenseObjects.listingChannelOption);
   }
   //Enter price - more than 40000
   async enterPrice(price: string | number) {
     await this.commonMethod.fill(IssueAdLicenseObjects.priceInputfield, String(price));
   }
   //Select communication method -whatsapp
-  async selectComunicationMethod() {
-    this.commonMethod.clickElement(IssueAdLicenseObjects.comunicationMethodCheckbox);
+  async selectCommunicationMethod() {
+    await this.commonMethod.clickElement(IssueAdLicenseObjects.communicationMethodCheckbox);
   }
-  //Select preefered time -no
-  async selectPrefferedTime() {
-    this.commonMethod.clickElement(IssueAdLicenseObjects.prefferedTimeRadioButton);
+  //Select preferred time -no
+  async selectPreferredTime() {
+    await this.commonMethod.clickElement(IssueAdLicenseObjects.preferredTimeRadioButton);
   }
   //Select any facility - kitchen - swimming pool - water
   async selectMultipleFacility() {
-    this.commonMethod.clickElement(IssueAdLicenseObjects.kitchenFacility);
-    this.commonMethod.clickElement(IssueAdLicenseObjects.swimmingPoolFacility);
-    this.commonMethod.clickElement(IssueAdLicenseObjects.waterFacility);
+    await this.commonMethod.clickElement(IssueAdLicenseObjects.kitchenFacility);
+    await this.commonMethod.clickElement(IssueAdLicenseObjects.swimmingPoolFacility);
+    await this.commonMethod.clickElement(IssueAdLicenseObjects.waterFacility);
   }
   //Generating description by AI
   async generatDescriptionByAI() {
-    this.commonMethod.clickElement(IssueAdLicenseObjects.createDescreptionByAIbutton);
+    await this.commonMethod.clickElement(IssueAdLicenseObjects.createDescreptionByAIbutton);
   }
   //Enter description
   async enterDescription(description: string) {
-    this.commonMethod.fill(IssueAdLicenseObjects.descriptionTextarea, description);
+    await this.commonMethod.fill(IssueAdLicenseObjects.descriptionTextarea, description);
   }
   //Upalod invalid image and validate then click on reject
   async uploadInvalidImageAndValidateTheMessage(invalidImage: string) {
-    this.commonMethod.uploadFile(IssueAdLicenseObjects.frontImage, invalidImage);
-    this.commonMethod.verifyElementVisible(IssueAdLicenseObjects.invalidImageMessage);
-    this.commonMethod.clickElement(IssueAdLicenseObjects.rejectButton);
+    await this.commonMethod.uploadFile(IssueAdLicenseObjects.frontImage, invalidImage);
+    await this.commonMethod.verifyElementVisible(IssueAdLicenseObjects.invalidImageMessage);
+    await this.commonMethod.clickElement(IssueAdLicenseObjects.rejectButton);
   }
-  //Upalod fron image and addtional images
-  async uploadFronAndAdditionalImages(images: string) {
+  //Upload from image and additional images
+  async uploadFroAndAdditionalImages(images: string) {
     await this.page.waitForTimeout(5000);
-    this.commonMethod.uploadFile(IssueAdLicenseObjects.frontImage, images);
+    await this.commonMethod.uploadFile(IssueAdLicenseObjects.frontImage, images);
     await this.page.waitForTimeout(8000);
-    this.commonMethod.uploadFile(IssueAdLicenseObjects.addtionalImage, images);
+    await this.commonMethod.uploadFile(IssueAdLicenseObjects.additionalImage, images);
   }
   //Check on terms agreements
-  async checkOnAgrreToTerms() {
-    this.commonMethod.clickElement(IssueAdLicenseObjects.agreedToTermsCheckbox);
+  async checkOnAgreeToTerms() {
+    await this.commonMethod.clickElement(IssueAdLicenseObjects.agreedToTermsCheckbox);
   }
   //Check on disclaimer
   async checkOnDisclaimer() {
-    this.commonMethod.clickElement(IssueAdLicenseObjects.disclaimerCheckbox);
+    await this.commonMethod.clickElement(IssueAdLicenseObjects.disclaimerCheckbox);
   }
   //Click on proceed to pay
   async clickOnProceedToPay() {
     await this.page.waitForTimeout(5000);
-    this.commonMethod.clickElement(IssueAdLicenseObjects.payButton);
+    await this.commonMethod.clickElement(IssueAdLicenseObjects.payButton);
   }
   //Verify the message and take the ad license number
   async verifySuccessMessageAndGetAdLicenseNumber() {
-    await this.commonMethod.verifyElementVisible(IssueAdLicenseObjects.adLicneseNumber);
-    const licenseText = await this.commonMethod.getText(IssueAdLicenseObjects.adLicneseNumber);
+    await this.commonMethod.verifyElementVisible(IssueAdLicenseObjects.adLicenseNumber);
+    const licenseText = await this.commonMethod.getText(IssueAdLicenseObjects.adLicenseNumber);
     const licenseNumber = licenseText.match(/رقم\s*#?(\d+)/)?.[1];
 
     if (!licenseNumber) {
@@ -111,18 +113,18 @@ export class IssueAdLicensePage {
 
   //Click on listings button
   async clickOnListingsButton() {
-    this.commonMethod.clickElement(IssueAdLicenseObjects.listingButton);
+    await this.commonMethod.clickElement(IssueAdLicenseObjects.listingButton);
   }
   //Click on filter options and verify are selected
   async verifyTheOptionsAreSelected() {
     await this.commonMethod.clickElement(IssueAdLicenseObjects.publishedOption);
-    await this.commonMethod.clickElement(IssueAdLicenseObjects.underUpdatOption);
+    await this.commonMethod.clickElement(IssueAdLicenseObjects.underUpdateOption);
     await this.commonMethod.clickElement(IssueAdLicenseObjects.rejectedOption);
     await this.commonMethod.clickElement(IssueAdLicenseObjects.hiddenOption);
     await this.commonMethod.clickElement(IssueAdLicenseObjects.draftOption);
     const options = [
       IssueAdLicenseObjects.publishedOption,
-      IssueAdLicenseObjects.underUpdatOption,
+      IssueAdLicenseObjects.underUpdateOption,
       IssueAdLicenseObjects.rejectedOption,
       IssueAdLicenseObjects.hiddenOption,
       IssueAdLicenseObjects.draftOption,
@@ -137,10 +139,10 @@ export class IssueAdLicensePage {
 
     return false;
   }
-  //Searh for ad liscnes or deed numbers
-  async SearchForAdLiscenseOrDeedNumbers(search: string) {
+  //Search for ad license or deed numbers
+  async SearchForAdLicenseOrDeedNumbers(search: string) {
     await this.page.waitForTimeout(3000);
-    this.commonMethod.fill(IssueAdLicenseObjects.searchInputfield, search);
+    await this.commonMethod.fill(IssueAdLicenseObjects.searchInputfield, search);
   }
   //View the listing details
   async viewListingDetails() {
@@ -158,28 +160,28 @@ export class IssueAdLicensePage {
   }
   //Edit description
   async editDescription(description: string) {
-    this.commonMethod.press(IssueAdLicenseObjects.descriptionTextarea, 'Control+A');
-    this.commonMethod.fill(IssueAdLicenseObjects.descriptionTextarea, description);
+    await this.commonMethod.press(IssueAdLicenseObjects.descriptionTextarea, 'Control+A');
+    await this.commonMethod.fill(IssueAdLicenseObjects.descriptionTextarea, description);
   }
   //Click on kebab button
   async clickOnKebabButton() {
     await this.page.waitForTimeout(3000);
-    this.commonMethod.clickElement(PropertiesAndUnitsObjects.kebabButton);
+    await this.commonMethod.clickElement(PropertiesAndUnitsObjects.kebabButton);
   }
   //Click on edit listing
   async clickOnEditListingButton() {
     await this.page.waitForTimeout(3000);
-    this.commonMethod.clickElement(IssueAdLicenseObjects.editListingButton);
+    await this.commonMethod.clickElement(IssueAdLicenseObjects.editListingButton);
   }
   //Click on save and confirm
-  async clickOnSaveAndConfrimButton() {
+  async clickOnSaveAndConfirmButton() {
     await this.page.waitForTimeout(3000);
-    this.commonMethod.clickElement(IssueAdLicenseObjects.saveAndConfirmButton);
+    await this.commonMethod.clickElement(IssueAdLicenseObjects.saveAndConfirmButton);
   }
   //Verify successful edit message
   async verifyTheSuccessfulEditMessage() {
     await this.page.waitForTimeout(3000);
-    this.commonMethod.verifyElementVisible(IssueAdLicenseObjects.successEditMessage);
+    await this.commonMethod.verifyElementVisible(IssueAdLicenseObjects.successEditMessage);
   }
   //Click on close X button
   async clickOnCloseButton() {
@@ -204,6 +206,17 @@ export class IssueAdLicensePage {
     await this.page.waitForTimeout(3000);
     await this.commonMethod.clickElement(IssueAdLicenseObjects.reasonHiddenOption);
     await this.commonMethod.clickElement(IssueAdLicenseObjects.sendRequestButton);
+  }
+  //Verify successful hide message
+  async verifyTheSuccessfulHideMessage() {
+    await this.page.waitForTimeout(3000);
+    await this.commonMethod.verifyElementVisible(IssueAdLicenseObjects.successHideMessage);
+  }
+
+  //Verify successful republish message
+  async verifyTheSuccessfulRepublishMessage() {
+    await this.page.waitForTimeout(3000);
+    await this.commonMethod.verifyElementVisible(IssueAdLicenseObjects.successRepublishMessage);
   }
   async fillCardDetails() {
     const madaPaymentTitle = this.page.getByTitle(IssueAdLicenseObjects.madaPaymentTitle.title);

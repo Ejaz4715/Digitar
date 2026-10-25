@@ -1,5 +1,5 @@
-export const RentalBehaviourObjects = {
-  rentalBehaviourButton: {
+export const RentalBehaviorObjects = {
+  rentalBehaviorButton: {
     xpath: "//span[contains(text(),'السلوك الإيجاري')]/parent::button",
   },
   newRequestButton: {
@@ -75,13 +75,13 @@ export const RentalBehaviourObjects = {
   kebabButton: {
     xpath: '//app-single-rental-behavior-inquiry-request//app-button',
   },
-  viewRequesKebabOption: {
+  viewRequestKebabOption: {
     xpath: "//span[text()='عرض الطلب']",
   },
   termsAndConditionCheckbox: {
     xpath: "//input[@data-name='consent']",
   },
-  appproveButton: {
+  approveButton: {
     xpath: "//span[text()=' الموافقة ']",
   },
   confirmButton: {

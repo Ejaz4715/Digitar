@@ -23,10 +23,10 @@ export const IssueAdLicenseObjects = {
   priceInputfield: {
     xpath: "//input[@formcontrolname='price']",
   },
-  comunicationMethodCheckbox: {
+  communicationMethodCheckbox: {
     xpath: "//span[text()='واتساب']/preceding-sibling::input",
   },
-  prefferedTimeRadioButton: {
+  preferredTimeRadioButton: {
     xpath: "(//input[@name='showPreferredContactTime'])[2]",
   },
   kitchenFacility: {
@@ -47,7 +47,7 @@ export const IssueAdLicenseObjects = {
   frontImage: {
     xpath: "//div[text()=' إضافة صورة واجهة المبنى ']/preceding-sibling::input[@type='file']",
   },
-  addtionalImage: {
+  additionalImage: {
     xpath: "//div[text()=' إضافة صور إضافية ']/preceding-sibling::input[@type='file']",
   },
   agreedToTermsCheckbox: {
@@ -65,7 +65,7 @@ export const IssueAdLicenseObjects = {
   payButton: {
     xpath: "//button[text()=' الذهاب للدفع ']",
   },
-  adLicneseNumber: {
+  adLicenseNumber: {
     xpath: "//b[contains(text(),'تم إنشاء ترخيص الإعلان')]",
   },
   cardNumberFrame: 'iframe[name="card.number"]',
@@ -99,7 +99,7 @@ export const IssueAdLicenseObjects = {
   publishedOption: {
     xpath: "//button[@id='ENUMS.LISTING_STATUS.PUBLISHED']",
   },
-  underUpdatOption: {
+  underUpdateOption: {
     xpath: "//button[@id='ENUMS.LISTING_STATUS.UNDER_UPDATE']",
   },
   rejectedOption: {
@@ -152,5 +152,11 @@ export const IssueAdLicenseObjects = {
   },
   editDescriptionText: {
     xpath: "//div[text()=' الوصف ']/following-sibling::div",
+  },
+  successHideMessage: {
+    text: 'تم اخفاء الوحدة بنجاح',
+  },
+  successRepublishMessage: {
+    text: 'تم إعادة نشر الإعلان بنجاح',
   },
 } as const;

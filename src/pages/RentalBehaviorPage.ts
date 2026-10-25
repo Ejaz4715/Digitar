@@ -1,8 +1,8 @@
 import { expect, Page } from '@playwright/test';
 import { CommonMethods } from '@pages/util/CommonMethod';
-import { RentalBehaviourObjects } from '@objects/RentalBehaviourObjects';
+import { RentalBehaviorObjects } from '@objects/RentalBehaviorObjects';
 
-export class RentalBehaviourPage {
+export class RentalBehaviorPage {
   page: Page;
 
   readonly commonMethod: CommonMethods;
@@ -11,61 +11,61 @@ export class RentalBehaviourPage {
     this.page = page;
     this.commonMethod = new CommonMethods(page);
   }
-  //Click on rental behaviour from side menu
-  async clickOnRentalBehaviourButton() {
-    this.commonMethod.clickElement(RentalBehaviourObjects.rentalBehaviourButton);
+  //Click on rental behavior from side menu
+  async clickOnRentalBehaviorButton() {
+    await this.commonMethod.clickElement(RentalBehaviorObjects.rentalBehaviorButton);
   }
   //Click on new request button
   async clickOnNewRequestButton() {
-    this.commonMethod.clickElement(RentalBehaviourObjects.newRequestButton);
+    await this.commonMethod.clickElement(RentalBehaviorObjects.newRequestButton);
   }
   //Enter national id as Tenant
   async enterNationalId(id: string | number) {
-    await this.commonMethod.fill(RentalBehaviourObjects.nationalIdInputfield, String(id));
+    await this.commonMethod.fill(RentalBehaviorObjects.nationalIdInputfield, String(id));
   }
   //Click on send request button
   async clickOnSendRequestButton() {
     await this.page.waitForTimeout(2000);
-    this.commonMethod.clickElement(RentalBehaviourObjects.sendRequestButton);
+    await this.commonMethod.clickElement(RentalBehaviorObjects.sendRequestButton);
   }
-  //Verify the successfull message
-  async verifySuccessfullMessage() {
+  //Verify the successful message
+  async verifySuccessfulMessage() {
     await this.page.waitForTimeout(10000);
-    this.commonMethod.verifyElementVisible(RentalBehaviourObjects.succesfulMessage);
+    await this.commonMethod.verifyElementVisible(RentalBehaviorObjects.succesfulMessage);
   }
   //Click on view requests button
   async clickOnViewRequestButton() {
     await this.page.waitForTimeout(2000);
-    this.commonMethod.clickElement(RentalBehaviourObjects.viewRequestsButton);
+    await this.commonMethod.clickElement(RentalBehaviorObjects.viewRequestsButton);
   }
   //Take the request number - first
   async getTheRequestNumber() {
-    return this.commonMethod.getText(RentalBehaviourObjects.requestNumber);
+    return await this.commonMethod.getText(RentalBehaviorObjects.requestNumber);
   }
   //EJAR
   //Enter username national id as Tenant
   async enterUsernameOrNationalId(id: string | number) {
-    await this.commonMethod.fill(RentalBehaviourObjects.userNameOrIdInputfield, String(id));
+    await this.commonMethod.fill(RentalBehaviorObjects.userNameOrIdInputfield, String(id));
   }
   //Enter passowrd
   async enterPassword(password: string | number) {
-    await this.commonMethod.fill(RentalBehaviourObjects.passwordInputfield, String(password));
+    await this.commonMethod.fill(RentalBehaviorObjects.passwordInputfield, String(password));
   }
   //Click on login button
   async clickOnLoginButton() {
-    this.commonMethod.clickElement(RentalBehaviourObjects.loginButton);
+    await this.commonMethod.clickElement(RentalBehaviorObjects.loginButton);
   }
   //Enter otp
   async enterOTPCode(otp: string | number) {
-    await this.commonMethod.fill(RentalBehaviourObjects.otpCodeInputfield, String(otp));
+    await this.commonMethod.fill(RentalBehaviorObjects.otpCodeInputfield, String(otp));
   }
   //Click on verify button
   async clickOnVerifyButton() {
-    await this.commonMethod.clickElement(RentalBehaviourObjects.verifyButton);
+    await this.commonMethod.clickElement(RentalBehaviorObjects.verifyButton);
   }
   //Change the active role only when it differs from the requested role
   async selectRoleIfNeeded(roleName: string) {
-    const activeRole = this.page.locator(RentalBehaviourObjects.role.xpath);
+    const activeRole = this.page.locator(RentalBehaviorObjects.role.xpath);
     const requestedRole = roleName.replace(/\s+/g, ' ').trim();
 
     await activeRole.waitFor({ state: 'visible' });
@@ -75,7 +75,7 @@ export class RentalBehaviourPage {
     }
 
     await activeRole.click();
-    const roleOptions = this.page.locator(RentalBehaviourObjects.roles.xpath);
+    const roleOptions = this.page.locator(RentalBehaviorObjects.roles.xpath);
     await roleOptions.first().waitFor({ state: 'visible' });
 
     const optionCount = await roleOptions.count();
@@ -93,46 +93,46 @@ export class RentalBehaviourPage {
   }
   //Click on requests tab button
   async clickOnTheRequestsTabButton() {
-    await this.commonMethod.clickElement(RentalBehaviourObjects.requestsTabButton);
+    await this.commonMethod.clickElement(RentalBehaviorObjects.requestsTabButton);
   }
   //Click on view requests option
   async clickOnViewRequestsOption() {
-    await this.commonMethod.clickElement(RentalBehaviourObjects.viewRequestsOption);
+    await this.commonMethod.clickElement(RentalBehaviorObjects.viewRequestsOption);
   }
   //Click on filter button
   async clickOnFilterButton() {
     await this.page.waitForTimeout(3000);
-    this.commonMethod.clickElement(RentalBehaviourObjects.filterButton);
+    await this.commonMethod.clickElement(RentalBehaviorObjects.filterButton);
   }
   //Enter request number
   async enterRequestNumber(requestNumber: string | number) {
     await this.page.waitForTimeout(3000);
-    await this.commonMethod.fill(RentalBehaviourObjects.requestNumberInputfield, String(requestNumber));
+    await this.commonMethod.fill(RentalBehaviorObjects.requestNumberInputfield, String(requestNumber));
   }
   //Click on kebab button
-  async clickOnKebabutton() {
-    this.commonMethod.clickElement(RentalBehaviourObjects.kebabButton);
+  async clickOnKebabButton() {
+    await this.commonMethod.clickElement(RentalBehaviorObjects.kebabButton);
   }
-  //Select view requset kebab button
+  //Select view request kebab button
   async selectViewTheRequest() {
     await this.page.waitForTimeout(3000);
-    this.commonMethod.clickElement(RentalBehaviourObjects.viewRequesKebabOption);
+    await this.commonMethod.clickElement(RentalBehaviorObjects.viewRequestKebabOption);
   }
   //Check on terms and conditions
   async checkOnTermsAndConditions() {
-    this.commonMethod.clickElement(RentalBehaviourObjects.termsAndConditionCheckbox);
+    await this.commonMethod.clickElement(RentalBehaviorObjects.termsAndConditionCheckbox);
   }
   //Click on approve button
   async clickOnApproveButton() {
-    this.commonMethod.clickElement(RentalBehaviourObjects.appproveButton);
+    await this.commonMethod.clickElement(RentalBehaviorObjects.approveButton);
   }
   //Click on confirm button
   async clickOnConfirmButton() {
-    this.commonMethod.clickElement(RentalBehaviourObjects.confirmButton);
+    await this.commonMethod.clickElement(RentalBehaviorObjects.confirmButton);
   }
-  //Verify the successfull approval message
-  async verifySuccessfullApprovalMessage() {
-    this.commonMethod.verifyElementVisible(RentalBehaviourObjects.successfulApprovalMessage);
+  //Verify the successful approval message
+  async verifySuccessfulApprovalMessage() {
+    await this.commonMethod.verifyElementVisible(RentalBehaviorObjects.successfulApprovalMessage);
   }
   async handlePopupCloseButtons() {
     await this.page.locator('.loading-container').waitFor({ state: 'hidden' });
@@ -154,26 +154,26 @@ export class RentalBehaviourPage {
   //Click on reports button
   async clickOnReportsButton() {
     await this.page.waitForTimeout(2000);
-    this.commonMethod.clickElement(RentalBehaviourObjects.reportsButton);
+    await this.commonMethod.clickElement(RentalBehaviorObjects.reportsButton);
   }
   //Search request number
   async searchForRequestNumber(searchFoRequestNumber: string | number) {
     await this.page.waitForTimeout(3000);
-    await this.commonMethod.fill(RentalBehaviourObjects.requestSearchInputfield, String(searchFoRequestNumber));
+    await this.commonMethod.fill(RentalBehaviorObjects.requestSearchInputfield, String(searchFoRequestNumber));
   }
   //Click on dots button
   async clickOnDotsButton() {
     await this.page.waitForTimeout(2000);
-    this.commonMethod.clickElement(RentalBehaviourObjects.dotsButton);
+    await this.commonMethod.clickElement(RentalBehaviorObjects.dotsButton);
   }
   //Click on pay fees option button
   async clickOnPayFeesOptionButton() {
     await this.page.waitForTimeout(2000);
-    this.commonMethod.clickElement(RentalBehaviourObjects.payFeesOptionButton);
+    await this.commonMethod.clickElement(RentalBehaviorObjects.payFeesOptionButton);
   }
   //Click on proceed to pay button
   async clickOnProceedToPayButton() {
     await this.page.waitForTimeout(2000);
-    this.commonMethod.clickElement(RentalBehaviourObjects.proceedToPayButton);
+    await this.commonMethod.clickElement(RentalBehaviorObjects.proceedToPayButton);
   }
 }
