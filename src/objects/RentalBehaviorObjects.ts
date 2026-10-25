@@ -12,7 +12,7 @@ export const RentalBehaviorObjects = {
     role: 'button',
     name: 'إرسال الطلب',
   },
-  succesfulMessage: {
+  successfulMessage: {
     text: 'تم إرسال الطلب بنجاح',
   },
   viewRequestsButton: {
