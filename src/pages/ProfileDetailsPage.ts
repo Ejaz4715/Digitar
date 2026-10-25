@@ -22,6 +22,7 @@ export class ProfileDetailsPage {
 
     await this.page.locator(ProfileDetailsObjects.userProfileManagementButton).waitFor({ state: 'visible', timeout: DEFAULT_TIMEOUT });
     await this.page.locator(ProfileDetailsObjects.userProfileManagementButton).click();
+    await this.page.waitForTimeout(3000);
   }
 
   async clickOnEditProfile() {
