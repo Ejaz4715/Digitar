@@ -1,0 +1,23 @@
+export const OpportunitiesPoolObjects = {
+  opportunitiesPoolPage: 'app-opportunities-pool',
+  projectFilterDropdown: 'app-opportunities-pool .filter-dropdown',
+  selectProject: (option: string) => `button[title='${option}']`,
+  reservableOpportunityRows: 'app-opportunities-pool tbody > tr.opportunity-row:has(button.claim-btn)',
+  firstReserveButton: 'app-opportunities-pool tbody > tr.opportunity-row button.claim-btn',
+  reservationSuccessMessage: "//p[contains(text(),' تمت المطالبة بالفرصة بنجاح ')]",
+  opportunitiesCartButton: "//app-opportunities-pool//button[contains(@class,'tab-pill-btn') and normalize-space()='سلة الفرص']",
+  successMessageCloseButton: "//div[contains(@class,'modal') and contains(@class,'show')]//button[normalize-space()='إغلاق']",
+  visibleMessagePopup: "//div[contains(@class,'modal') and contains(@class,'show')]//div[contains(@class,'modal-content')]",
+  successMessageCartButton: "//div[contains(@class,'modal') and contains(@class,'show')]//button[normalize-space()='سلة الفرص']",
+  reservedOpportunitiesCount: 'app-my-basket tbody > tr.basket-row',
+  // reserved opportunities whose status has not been set yet still show the status dropdown
+  updatableCartRows: 'app-my-basket tbody > tr.basket-row:has(button.status-trigger)',
+  cartTable: 'app-my-basket tbody',
+  cartRowByOpportunity: (opportunityNumber: string) => `//app-my-basket//tbody/tr[contains(@class,'basket-row')][td[1][normalize-space()='${opportunityNumber}']]`,
+  statusTrigger: 'button.status-trigger',
+  statusOption: (status: string) => `//div[contains(@class,'status-dropdown')]//button[.//span[normalize-space()='${status}']]`,
+  statusReasonTextarea: 'app-status-select .reason-popup textarea',
+  statusReasonSubmitButton: 'app-status-select .reason-popup button.popup-btn-submit',
+  statusUpdateSuccessMessage: "//div[contains(@class,'modal') and contains(@class,'show')]//p[contains(normalize-space(),'تم تحديث الحالة بنجاح')]",
+  statusUpdateSuccessCloseButton: "//div[contains(@class,'modal') and contains(@class,'show')][.//p[contains(normalize-space(),'تم تحديث الحالة بنجاح')]]//button[@aria-label='Close']",
+} as const;

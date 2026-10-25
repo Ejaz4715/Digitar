@@ -9,7 +9,12 @@
       "userId": "1016549832"
     },
     "opportunities-pool": {
-      "userId": "1016549832"
+      "userId": "1016549832",
+      "projectName": "الرياض التحالف العقارية إشراق ليفنج",
+      "statuses": ["غير مهتم", "لا يستطيع الدفع"],
+      "statusReason": "تم تحديث الحالة بعد التواصل مع العميل",
+      "reservationLimitMessage": "لقد وصلت إلى الحد الأقصى",
+      "maxReservations": 5
     },
     "booking": {
       "userId": "1016549832"

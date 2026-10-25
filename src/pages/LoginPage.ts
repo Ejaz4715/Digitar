@@ -26,7 +26,8 @@ export class LoginPage {
   }
 
   async acceptCookies() {
-    const acceptCookiesButton = this.page.getByRole(LoginObjects.acceptCookiesButton.role, { name: LoginObjects.acceptCookiesButton.name });
+    // the banner sometimes renders two accept buttons (desktop and mobile layouts), click the visible one
+    const acceptCookiesButton = this.page.getByRole(LoginObjects.acceptCookiesButton.role, { name: LoginObjects.acceptCookiesButton.name }).filter({ visible: true }).first();
     await acceptCookiesButton.click();
   }
   async enterUserId(userId: string) {
