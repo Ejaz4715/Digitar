@@ -41,6 +41,12 @@ export class DataHelper {
     fs.writeFileSync(dataFilePath, JSON.stringify(currentData, null, 2), 'utf-8');
   }
 
+  /**
+   * Record web browser HTML logs
+   * Capture the API based on the request number number - extract EJAR reference and write to json file in a specified service and key.
+   * @param page - page
+   * @param requestNumber - Request number coming from DIGITAR
+   */
   static async recordReferenceResponse(page: Page, requestNumber: string): Promise<void> {
     const response = await page.waitForResponse(
       async (candidate) => {
@@ -56,9 +62,9 @@ export class DataHelper {
     const responseBody: unknown = await response.json();
 
     const currentData = this.readData();
-    const rentalBehaviourData = currentData.services?.['rental-behaviour'];
-    if (!rentalBehaviourData || String(rentalBehaviourData.requestNumber) !== requestNumber) {
-      throw new Error(`Request number "${requestNumber}" was not found in rental-behaviour test data.`);
+    const rentalBehaviorData = currentData.services?.['rental-behavior'];
+    if (!rentalBehaviorData || String(rentalBehaviorData.requestNumber) !== requestNumber) {
+      throw new Error(`Request number "${requestNumber}" was not found in rental-behavior test data.`);
     }
 
     fs.mkdirSync(apiResponseDirectory, { recursive: true });
@@ -79,7 +85,7 @@ export class DataHelper {
       throw new Error(`The API response for request "${requestNumber}" did not contain a reference.`);
     }
 
-    rentalBehaviourData.ejarReference = reference;
+    rentalBehaviorData.ejarReference = reference;
     fs.writeFileSync(dataFilePath, JSON.stringify(currentData, null, 2), 'utf-8');
   }
 
@@ -108,7 +114,6 @@ export class DataHelper {
         return reference;
       }
     }
-
     return undefined;
   }
 }
