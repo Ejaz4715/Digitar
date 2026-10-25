@@ -41,13 +41,14 @@ test.describe('Profile Details Management', () => {
         await app.homePage.clickOnLanguageSwitcher();
         await app.homePage.closeCloseSurveyModel();
         await app.homePage.closeRecommendationModel();
+        await app.homePage.closeNewServiceModel();
       });
 
       await logStep('Step 02: check user profile is visible');
       await app.profileDetailsPage.openProfileDetails();
 
       //verify the user able to view his information in overview
-      expect(app.profileDetailsPage.areProfileDetailsVisible()).toBe(true);
+      expect(await app.profileDetailsPage.areProfileDetailsVisible()).toBe(true);
     }
   );
   test(
@@ -65,7 +66,7 @@ test.describe('Profile Details Management', () => {
       await app.homePage.clickOnLanguageSwitcher();
       await app.homePage.closeCloseSurveyModel();
       await app.homePage.closeRecommendationModel();
-      await app.commonMethods.clickIfVisible(LoginObjects.doneButton);
+      await app.homePage.closeNewServiceModel();
 
       await logStep('Step 02: Open profile details');
       await app.profileDetailsPage.openProfileDetails();
