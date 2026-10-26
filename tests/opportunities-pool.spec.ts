@@ -32,7 +32,7 @@ test.describe('Opportunities Pool', () => {
     {
       annotation: [
         {
-          product: 'Digitar',
+          product: 'Digitar Broker',
           type: 'non-critical',
         } as any,
       ],
@@ -55,7 +55,7 @@ test.describe('Opportunities Pool', () => {
     {
       annotation: [
         {
-          product: 'Digitar',
+          product: 'Digitar Broker',
           type: 'non-critical',
         } as any,
       ],
@@ -88,7 +88,7 @@ test.describe('Opportunities Pool', () => {
     {
       annotation: [
         {
-          product: 'Digitar',
+          product: 'Digitar Broker',
           type: 'non-critical',
         } as any,
       ],
@@ -125,7 +125,7 @@ test.describe('Opportunities Pool', () => {
     {
       annotation: [
         {
-          product: 'Digitar',
+          product: 'Digitar Broker',
           type: 'non-critical',
         } as any,
       ],

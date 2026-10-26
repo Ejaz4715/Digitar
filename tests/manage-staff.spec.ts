@@ -32,7 +32,7 @@ test.describe('Manage Staff', () => {
     {
       annotation: [
         {
-          product: 'Digitar',
+          product: 'Digitar Broker',
           type: 'non-critical',
         } as any,
       ],
@@ -76,7 +76,7 @@ test.describe('Manage Staff', () => {
     {
       annotation: [
         {
-          product: 'Digitar',
+          product: 'Digitar Broker',
           type: 'non-critical',
         } as any,
       ],
@@ -115,7 +115,7 @@ test.describe('Manage Staff', () => {
     {
       annotation: [
         {
-          product: 'Digitar',
+          product: 'Digitar Broker',
           type: 'non-critical',
         } as any,
       ],
@@ -156,7 +156,7 @@ test.describe('Manage Staff', () => {
     {
       annotation: [
         {
-          product: 'Digitar',
+          product: 'Digitar Broker',
           type: 'non-critical',
         } as any,
       ],
@@ -194,7 +194,7 @@ test.describe('Manage Staff', () => {
     {
       annotation: [
         {
-          product: 'Digitar',
+          product: 'Digitar Broker',
           type: 'non-critical',
         } as any,
       ],
