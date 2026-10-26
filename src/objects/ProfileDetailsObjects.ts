@@ -2,7 +2,7 @@ export const ProfileDetailsObjects = {
   userDropdownIcon: '#userDropdown > img',
   userProfileManagementButton: "//p[contains(text(),'إدارة الملف الشخصي')]/..",
   profileDetailsContent: 'app-profile',
-  profileEditButton: 'button.edit-btn',
+  profileEditButton: "//button[contains(text(),'تعديل الملف الشخصي')]",
   experienceDropdown: '#experiences',
   employmentStatusDropdown: '#employmentStatus',
   companyName: '#companyName',
