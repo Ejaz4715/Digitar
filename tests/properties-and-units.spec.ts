@@ -303,7 +303,6 @@ test.describe('View Properties and Units', () => {
     await page.waitForTimeout(2000);
     await app.commonMethods.clickElement(PropertiesAndUnitsObjects.kebabButton);
     await app.commonMethods.clickElement(PropertiesAndUnitsObjects.viewUnitDetailsButton);
-    await app.commonMethods.clickElement(PropertiesAndUnitsObjects.propertyUnitCard);
     await app.commonMethods.verifyElementVisible(PropertiesAndUnitsObjects.unitDetailsPage);
   });
   test('TC-11 Verify the user search with unit type and search with deed number', { annotation: [{ product: 'Digitar Broker', type: 'Non-critical' }] as any }, async ({ page }) => {
@@ -458,7 +457,7 @@ test.describe('View Properties and Units', () => {
     await app.commonMethods.clickElement(PropertiesAndUnitsObjects.propertyUnitCard);
     await app.commonMethods.verifyElementVisible(PropertiesAndUnitsObjects.propertyDetailsPage);
   });
-  test('TC-16 Verify the market insight section/data statestics is exists', { annotation: [{ product: 'Digitar Broker', type: 'Non-critical' }] as any }, async ({ page }) => {
+  test('TC-16 Verify the market insight section/data statistics is exists', { annotation: [{ product: 'Digitar Broker', type: 'Non-critical' }] as any }, async ({ page }) => {
     //read data from json relative to the service
     const environment = readEnvironments();
     const data = readServiceData();

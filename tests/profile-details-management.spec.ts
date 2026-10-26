@@ -31,7 +31,7 @@ test.describe('Profile Details Management', () => {
     {
       annotation: [
         {
-          product: 'Digitar',
+          product: 'Digitar Broker',
           type: 'non-critical',
         } as any,
       ],
@@ -56,7 +56,7 @@ test.describe('Profile Details Management', () => {
     {
       annotation: [
         {
-          product: 'Digitar',
+          product: 'Digitar Broker',
           type: 'non-critical',
         } as any,
       ],
@@ -89,7 +89,7 @@ test.describe('Profile Details Management', () => {
     {
       annotation: [
         {
-          product: 'Digitar',
+          product: 'Digitar Broker',
           type: 'non-critical',
         } as any,
       ],
@@ -118,7 +118,7 @@ test.describe('Profile Details Management', () => {
     {
       annotation: [
         {
-          product: 'Digitar',
+          product: 'Digitar Broker',
           type: 'non-critical',
         } as any,
       ],
@@ -153,7 +153,7 @@ test.describe('Profile Details Management', () => {
     {
       annotation: [
         {
-          product: 'Digitar',
+          product: 'Digitar Broker',
           type: 'non-critical',
         } as any,
       ],

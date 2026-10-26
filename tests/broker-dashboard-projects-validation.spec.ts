@@ -30,7 +30,7 @@ test.describe('Individual Broker Dashboard/Projects [Data panel]', () => {
     {
       annotation: [
         {
-          product: 'Digitar',
+          product: 'Digitar Broker',
           type: 'non-critical',
         } as any,
       ],
@@ -53,7 +53,7 @@ test.describe('Individual Broker Dashboard/Projects [Data panel]', () => {
     {
       annotation: [
         {
-          product: 'Digitar',
+          product: 'Digitar Broker',
           type: 'non-critical',
         } as any,
       ],
@@ -78,7 +78,7 @@ test.describe('Individual Broker Dashboard/Projects [Data panel]', () => {
     {
       annotation: [
         {
-          product: 'Digitar',
+          product: 'Digitar Broker',
           type: 'non-critical',
         } as any,
       ],
@@ -103,7 +103,7 @@ test.describe('Individual Broker Dashboard/Projects [Data panel]', () => {
     {
       annotation: [
         {
-          product: 'Digitar',
+          product: 'Digitar Broker',
           type: 'non-critical',
         } as any,
       ],
@@ -129,7 +129,7 @@ test.describe('Individual Broker Dashboard/Projects [Data panel]', () => {
     {
       annotation: [
         {
-          product: 'Digitar',
+          product: 'Digitar Broker',
           type: 'non-critical',
         } as any,
       ],
@@ -159,7 +159,7 @@ test.describe('Individual Broker Dashboard/Projects [Data panel]', () => {
     {
       annotation: [
         {
-          product: 'Digitar',
+          product: 'Digitar Broker',
           type: 'non-critical',
         } as any,
       ],
@@ -185,7 +185,7 @@ test.describe('Individual Broker Dashboard/Projects [Data panel]', () => {
     {
       annotation: [
         {
-          product: 'Digitar',
+          product: 'Digitar Broker',
           type: 'non-critical',
         } as any,
       ],
@@ -216,7 +216,7 @@ test.describe('Individual Broker Dashboard/Projects [Data panel]', () => {
     {
       annotation: [
         {
-          product: 'Digitar',
+          product: 'Digitar Broker',
           type: 'non-critical',
         } as any,
       ],
@@ -249,7 +249,7 @@ test.describe('Individual Broker Dashboard/Projects [Data panel]', () => {
     {
       annotation: [
         {
-          product: 'Digitar',
+          product: 'Digitar Broker',
           type: 'non-critical',
         } as any,
       ],
@@ -283,7 +283,7 @@ test.describe('Individual Broker Dashboard/Projects [Data panel]', () => {
     {
       annotation: [
         {
-          product: 'Digitar',
+          product: 'Digitar Broker',
           type: 'non-critical',
         } as any,
       ],
@@ -317,7 +317,7 @@ test.describe('Individual Broker Dashboard/Projects [Data panel]', () => {
     {
       annotation: [
         {
-          product: 'Digitar',
+          product: 'Digitar Broker',
           type: 'non-critical',
         } as any,
       ],
@@ -353,7 +353,7 @@ test.describe('Individual Broker Dashboard/Projects [Data panel]', () => {
     {
       annotation: [
         {
-          product: 'Digitar',
+          product: 'Digitar Broker',
           type: 'non-critical',
         } as any,
       ],
@@ -388,7 +388,7 @@ test.describe('Individual Broker Dashboard/Projects [Data panel]', () => {
     {
       annotation: [
         {
-          product: 'Digitar',
+          product: 'Digitar Broker',
           type: 'non-critical',
         } as any,
       ],
